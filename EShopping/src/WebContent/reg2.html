@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>注册表单</title>
+		<style type="text/css">
+			#father{
+				border: 0px solid black;
+				width: 1200px;
+				height: 680px;
+			}
+			#reg{
+				border: 0px solid red;
+				width: 1200px;
+				height: 50px;
+			}
+			.regclass{
+				border: 0px solid yellow;
+				width: 398px;
+				height: 100%;	
+				float: left;			
+			}
+			#menu{
+				border: 0px solid red;
+				width: 100%;
+				height: 40px;
+				background-color: black;
+				margin-bottom: 5px;
+			}
+			ul li{
+				color: white;
+				display: inline;
+			}
+			#regForm{
+				border: 0px solid red;
+				width: 100%;
+				height: 600px;
+			}
+			#bottom{
+				border: 0px solid red;
+				width: 100%;
+				height: 80px;
+				text-align: center;
+			}
+			a{
+				text-decoration: none;
+			}	
+			label.error{
+				background:url(img/unchecked.gif) no-repeat 10px 3px;
+				padding-left: 30px;
+				font-family:georgia;
+				font-size: 15px;
+				font-style: normal;
+				color: red;
+			}
+			
+			label.success{
+				background:url(img/checked.gif) no-repeat 10px 3px;
+				padding-left: 30px;
+			}
+			#form2{
+				border: 5px solid gray;
+				width: 660px;
+				height: 450px;
+				margin-left:200px;
+
+			}
+
+		
+		</style>	
+		<script type="text/javascript" src="js/jquery-2.1.0.min.js" ></script>
+		<script type="text/javascript" src="js/jquery.validate.min.js" ></script>
+		<script type="text/javascript" src="js/messages_zh.js" ></script>
+
+
+	
+		<script type="text/javascript">
+
+		
+
+			$(function(){
+				//使用JQuery实现下拉列表二级联动
+				
+				var cities = new Array(3);
+				cities[0] = new Array("长沙市","岳阳市","衡阳市","株洲市");
+				cities[1] = new Array("武汉市","荆州市","衡水市","襄阳市");
+				cities[2] = new Array("郑州市","洛阳市","开封市","漯河市");
+				cities[3] = new Array("保定市","石家庄市","张家口市","廊坊市");				
+				$("#province").change(function(){
+					//alert("aa");
+					var thisvalue = this.value;
+					$("#city").empty();
+					$.each(cities[thisvalue],function(i,n){
+						
+						var textNode = document.createTextNode(n);
+						
+						var optEle = document.createElement("option");
+
+						$(optEle).append(textNode);
+						
+						$(optEle).appendTo($("#city"));
+						//alert(n);
+					})
+				});
+				
+				$("#verifypic").click(function(){
+					//alert("aa");
+					$(this).attr("src","/Shopping/verifycode?time="+new Date().getTime());
+					//$(this).attr("src","/Shopping/verifycode?time=22");
+				});
+				
+				$("#regForm1").validate({
+					rules:{
+						repassword:{
+							equalTo:"[name='password']"
+						},
+						password:{
+							minlength:6
+						}
+					},
+					messages:{
+						repassword:{
+							equalTo:"密码不一致！"
+						},
+						password:{
+							minlength:"密码长度至少6位!"
+						}
+					},
+					errorElement: "label", //用来创建错误提示信息标签
+					success: function(label) { //验证成功后的执行的回调函数
+						//label指向上面那个错误提示信息标签label
+						label.text(" ") //清空错误提示消息
+						.addClass("success"); //加上自定义的success类
+					}
+
+				});
+
+			});
+			//使用JS实现form的校验
+//			function checkReg(){
+//				//alert("aa");
+//				if (document.getElementById("password").value!=document.getElementById("repassword").value){
+//					alert("密码不一致");
+//					return false;
+//				}
+//				//判断email是否为有效地址，因为使用的是email的input type，所以此段无法执行到				
+//
+//				var eValue = document.getElementById("email").value;
+//				
+//				if(!/^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/.test(eValue)){
+//					alert("email地址无效");
+//					return false;				
+//				}
+//				
+//			}
+
+			function onFocus(id, info){
+				document.getElementById(id+'span').innerHTML="<font color='gray'>"+info+"</font>";			
+			}
+			function onBlur(id, info){
+				if (document.getElementById(id).value==""){
+					document.getElementById(id+'span').innerHTML="<font color='red'>"+info+"</font>";	
+				}
+				else{
+					document.getElementById(id+'span').innerHTML="<font color='green'>√</font>";	
+				}
+			}
+			//function clickVerifyCode(obj){
+			//	obj.src="/Shopping/verifycode?time="+new Date().getTime();
+			//	obj.src="/Shopping/verifycode?time=1";
+				//alert("aa");onclick="clickVerifyCode(this)"
+			//}
+			//使用js dom实现下拉列表二级联动
+//			var cities = new Array(3);
+//			cities[0] = new Array("长沙市","岳阳市","衡阳市","株洲市");
+//			cities[1] = new Array("武汉市","荆州市","衡水市","襄阳市");
+//			cities[2] = new Array("郑州市","洛阳市","开封市","漯河市");
+//			cities[3] = new Array("保定市","石家庄市","张家口市","廊坊市");
+			
+//			function chgProvince(province){
+//				var cityEle = document.getElementById("city");
+//				cityEle.options.length = 0;
+//				for(var i=0;i<cities[province].length;i++){
+//					var textNode = document.createTextNode(cities[province][i]);
+//					var optEle = document.createElement("option");
+//					optEle.appendChild(textNode);
+//					
+//					cityEle.appendChild(optEle);
+//					
+//				}
+//			}
+
+		</script>
+	</head>
+	<body>
+		<!--0最大的容器-->
+		<div id="father">
+			<!--1注册-->
+			<div id="reg" >
+				<div class="regclass">
+					<img src="img/logo2.png" height="46px" />
+				</div>
+				<div class="regclass">
+					<img src="img/header.png" height="46px"/>
+				</div>
+				<div class="regclass">
+					<br />
+					<a href="#">登录</a>
+					<a href="reg.html">注册</a>
+					<a href="#">购物车</a>
+				</div>				
+			</div>
+			<div id="menu">
+				<ul>
+					<a href="#"><li style="font-size: 20px">首页</li></a>&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>家用电器</li></a>&nbsp;&nbsp;&nbsp;
+					<a href="#"><li>孕婴保健</li></a>&nbsp;&nbsp;&nbsp;
+					<a href="#" ><li>运动器材</li></a>&nbsp;&nbsp;&nbsp;
+					<a href="#" ><li>电脑数码</li></a>&nbsp;&nbsp;&nbsp;
+					<a href="#" ><li>珠宝玉器</li></a>
+				</ul>
+
+			</div>
+
+			<div id="regForm" style="background-image: url(img/regist_bg.jpg);">
+					<form action="/Shopping/register" method="post" onsubmit="return /verify/userRegister" id="regForm1">
+<!--						<tr><td>-->
+						<div id="form2">
+							<table cellpadding="0px" cellspacing="0px" align="center" height="400px" width="700px">
+								<tr>
+									<td colspan="2">会员注册&nbsp;&nbsp;USER REGISTER </td>
+								</tr>
+								<tr>
+									<td>用户名</td>
+									<td>
+										<em style="color: red;">*</em><input type="text" size="34px" name="username" id="username" required="required"/> 
+									</td>
+								</tr>
+								<tr>
+									<td>密码</td>
+									<td>
+										<em style="color: red;">*</em><input type="password" size="34px" name="password" id="password"  /><span id="passwordspan"></span>
+										<label for="password" class="error"></label>
+									</td>
+								</tr>
+								<tr>
+									<td>确认密码</td>
+									<td>
+										<em style="color: red;">*</em><input type="password" size="34px" name="repassword" id="repassword" />
+										<label for="repassword" class="error"></label>
+									</td>
+								</tr>
+								<tr>
+									<td>Email</td>
+									<td><em style="color: red;">*</em><input type="email" size="34px" name="email" id="email" /></td>
+								</tr>
+								<tr>
+									<td>姓名</td>
+									<td><em style="color: red;">*</em><input type="name" size="34px" name="name" id="name" onfocus="onFocus('name','请输入真实姓名')" onblur="onBlur('name','姓名不能为空')"/><span id="namespan"></span></td>
+								</tr>
+								<tr>
+									<td>性别</td>
+									<td><em style="color: red;">*</em><input type="radio" name="sex" id="sex" value="男"/> 男
+									<input type="radio" name="sex" id="sex" value="女"/> 女
+									<!--<label for="sex" class="error"></label>-->
+									</td>
+								</tr>
+								<tr>
+									<td>出生日期</td>
+									<td><em style="color: red;">*</em><input type="date" size="34px" name="birthday" id="birthday"/></td>
+								</tr>
+								<tr>
+									<td>出生地</td>
+									<td>
+										<!-- 该句采用DOM时有效，采用jQuery时不需要定义onclick函数名
+										<em style="color: red;">*</em><select size="34px" name="province" id="province" onchange="chgProvince(this.value)">
+										-->
+										<em style="color: red;">*</em><select size="34px" name="province" id="province" >
+											<option>---选择省份---</option>
+											<option value="0">湖南</option>
+											<option value="1">湖北</option>
+											<option value="2">河南</option>
+											<option value="3">河南</option>
+										</select>
+										<select size="34px" name="city" id="city">
+											<!--<option>---选择城市---</option>-->
+										</select>
+									</td>
+								</tr>								
+								<tr>
+									<td>验证码</td>
+									<td><em style="color: red;">*</em><input type="text" size="34px" name="verifycode" id="verifycode"/>&nbsp;&nbsp;<img id="verifypic" src="/Shopping/verifycode"/></td>
+								</tr>
+								<tr>
+									<td colspan="2"> <input type="submit" name="submit" id="submit" value="注册" /></td>
+								</tr>					
+										
+							</table>
+						</div>
+
+				</form>
+
+			</div>			
+			<div id="bottom">	
+				<br />
+				<a href="#">关于我们</a>
+				<a href="#">联系我们</a>
+				<a href="#">招贤纳士</a>
+				<a href="#">法律声明</a>
+				<a href="#">友情链接</a>
+				<a href="#">支付方式</a>
+				<a href="#">配送方式</a>
+				<a href="#">服务声明</a>
+				<a href="#">广告声明</a>	
+				<br />
+				<p>Copyright © 2005-2016 传智商城 版权所有</p>
+			</div>
+		</div>
+	</body>
+</html>
