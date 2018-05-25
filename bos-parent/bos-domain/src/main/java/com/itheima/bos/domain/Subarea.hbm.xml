@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 2018-2-24 8:37:32 by Hibernate Tools 5.0.6.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.itheima.bos.domain.Subarea" table="bc_subarea">
+        <id name="id" type="string" >
+            <column length="32" name="id" />
+            <generator class="uuid"/>
+        </id>
+        <property generated="never" lazy="false" name="decidedzone" optimistic-lock="true" type="string" unique="false">
+        	<column length="32" name="decidezone_id" />
+        </property>
+<!--          <many-to-one class="com.itheima.bos.domain.Decidedzone" lazy="false" fetch="select" name="Decidedzone" > -->
+<!--             <column length="32" name="decidedzone_id"/> -->
+<!--         </many-to-one> -->
+        <many-to-one class="com.itheima.bos.domain.Region" lazy="false" fetch="select" name="Region" >
+            <column length="32" name="region_id"/>
+        </many-to-one> 
+
+<!--         <property generated="never" lazy="false" name="region" optimistic-lock="true" type="string" unique="false"> -->
+<!--             <column length="32" name="region_id"/> -->
+<!--         </property> -->
+        <property generated="never" lazy="false" name="addresskey" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="addresskey"/>
+        </property>
+        <property generated="never" lazy="false" name="startnum" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="startnum"/>
+        </property>
+        <property generated="never" lazy="false" name="endnum" optimistic-lock="true" type="string" unique="false">
+            <column length="30" name="endnum"/>
+        </property>
+        <property generated="never" lazy="false" name="single" optimistic-lock="true" type="java.lang.Character" unique="false">
+            <column length="1" name="single"/>
+        </property>
+        <property generated="never" lazy="false" name="position" optimistic-lock="true" type="string" unique="false">
+            <column name="position"/>
+        </property>
+    </class>
+    <query name="subarea.deleteById">
+    	DELETE Subarea WHERE id = ?
+    </query>
+</hibernate-mapping>

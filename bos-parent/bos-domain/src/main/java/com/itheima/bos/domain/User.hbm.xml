@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+	<class table="t_user" name="com.itheima.bos.domain.User">
+		<id name="id" type="java.lang.String">
+			<column name="id" length="32"></column>
+			<generator class="assigned"></generator>
+		</id>
+		<property name="username" type="java.lang.String">
+			<column name="username" length="20" not-null="true" ></column>
+		</property>
+		<property name="password" type="java.lang.String">
+			<column name="password" length="32" not-null="true" ></column>
+		</property>
+		<property name="salary" type="java.lang.Double">
+			<column name="salary" scale="0" precision="22" ></column>
+		</property>	
+		<property name="birthday" type="java.util.Date">
+			<column name="birthday" length="0" ></column>
+		</property>
+		<property name="gender" type="java.lang.String">
+			<column name="gender" length="10"  ></column>
+		</property>
+		<property name="station" type="java.lang.String">
+			<column name="station" length="40"  ></column>
+		</property>
+		<property name="telephone" type="java.lang.String">
+			<column name="telephone" length="11" ></column>
+		</property>
+		<property name="remark" type="java.lang.String">
+			<column name="remark"  ></column>
+		</property>		
+
+	</class>
+		<query name="user.updatePassword">
+			UPDATE User SET password = ? WHERE id = ?
+		</query>
+</hibernate-mapping>
