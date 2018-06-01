@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登陆页面</title>
+<script src="./static/js/jquery-1.8.3.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="./static/css/style.css" />
+<link type="text/css" rel="stylesheet" href="./static/css/style_grey.css" />
+<style>
+input[type=text] {
+	width: 80%;
+	height: 25px;
+	font-size: 12pt;
+	font-weight: bold;
+	margin-left: 45px;
+	padding: 3px;
+	border-width: 0;
+}
+
+input[type=password] {
+	width: 80%;
+	height: 25px;
+	font-size: 12pt;
+	font-weight: bold;
+	margin-left: 45px;
+	padding: 3px;
+	border-width: 0;
+}
+
+#loginform\:codeInput {
+	margin-left: 1px;
+	margin-top: 1px;
+}
+
+#loginform\:vCode {
+	margin: 0px 0 0 60px;
+	height: 34px;
+}
+</style>
+<script type="text/javascript">
+	if(window.self != window.top){
+		window.top.location = window.location;
+	}
+</script>
+</head>
+<body ng-app="HelloAjax">
+	<div
+		style="width: 900px; height: 50px; position: absolute; text-align: left; left: 50%; top: 50%; margin-left: -450px;; margin-top: -280px;">
+		<span style="float: right; margin-top: 35px; color: #488ED5;">新BOS系统，致力于便捷、安全、稳定等方面的客户体验</span>
+	</div>
+	<div class="main-inner" id="mainCnt"
+		style="width: 900px; height: 440px; overflow: hidden; position: absolute; left: 50%; top: 50%; margin-left: -450px; margin-top: -220px; background-image: url('./static/images/bg_login.jpg')">
+		<div id="loginBlock" class="login"
+			style="margin-top: 80px; height: 255px;">
+
+			<div class="loginFunc">
+				<div id="lbNormal" class="loginFuncMobile">员工登录</div>
+			</div>
+			<div ng-controller="HelloAjax as ctrl" class="loginForm">
+				<form ng-submit="login()" id="loginform" name="loginform"  class="niceform">
+					<div id="idInputLine" class="loginFormIpt showPlaceholder"
+						style="margin-top: 5px;">
+						<input ng-model="ctrl.username" id="loginform:idInput" type="text" name="username"
+							class="loginFormTdIpt" maxlength="50" />
+						<label for="idInputLine" class="placeholder" id="idPlaceholder">帐号：</label>
+					</div>
+					<div class="forgetPwdLine"></div>
+					<div id="pwdInputLine" class="loginFormIpt showPlaceholder">
+						<input ng-model="ctrl.password" id="loginform:pwdInput" class="loginFormTdIpt" type="password"
+							name="password" value="" />
+						<label for="pwdInputLine" class="placeholder" id="pwdPlaceholder">密码：</label>
+					</div>
+					<div class="loginFormIpt loginFormIptWiotTh"
+						style="margin-top:58px;">
+						<div id="codeInputLine" class="loginFormIpt showPlaceholder"
+							 style="margin-left:0px;margin-top:-40px;width:50px;">
+							<input id="loginform:codeInput" class="loginFormTdIpt" type="text"
+								   name="checkcode" title="请输入验证码" />
+							<img id="loginform:vCode" src="http://localhost:8080/MyBosSpringMVCandAngular/DrawValidateCodeImage"
+								 onclick="javascript:document.getElementById('loginform:vCode').src='http://localhost:8080/MyBosSpringMVCandAngular/DrawValidateCodeImage'+Math.random();" />
+						</div>
+<!-- 							<a onclick="document.getElementById('loginform').submit();" href="#" id="loginform:j_id19" name="loginform:j_id19"> -->
+						<input type="submit" style="margin-top: -36px" value="登录" class="btn btn-login" ng-disabled="loginform.$invalid">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div
+		style="width: 900px; height: 50px; position: absolute; text-align: left; left: 50%; top: 50%; margin-left: -450px;; margin-top: 220px;">
+		<span style="color: #488ED5;">Powered By www.itcast.cn</span><span
+			style="color: #488ED5;margin-left:10px;">推荐浏览器（右键链接-目标另存为）：<a
+			href="http://download.firefox.com.cn/releases/full/23.0/zh-CN/Firefox-full-latest.exe">Firefox</a>
+		</span>
+	</div>
+	
+      <script src="./static/js/angular.min.js"> </script>
+<script>
+
+    var myModule = angular.module("HelloAjax",[]);
+    myModule.controller("HelloAjax",["$scope","$http",function HelloAjax($scope,$http){
+        /*
+        $scope.users=[{'username':"zhangsan","email":"zs@11.com"},
+          {'username':"zhangsan2","email":"zs@22.com"},
+          {'username':"zhangsan3","email":"zs@33.com"}];
+        */
+        $scope.username = "kelly";
+        $scope.password = "1234";
+        $scope.login = function(){
+            $http({
+                method: "POST",
+                url: "http://localhost:8080/MyBosSpringMVCandAngular/login",
+                data:{'username':$scope.username,
+                    'password':$scope.password
+                }
+            }).
+            success(function(data, status) {
+                //$scope.status = status;
+                $scope.user = data;
+            }).
+            error(function(data, status) {
+                //$scope.data = data || "Request failed";
+                //$scope.status = status;
+            });
+        }
+        $scope.method2 = function() {
+            $scope.url = "http://localhost:8081/Learning5/T1.action";
+            $http({method:"POST",url:$scope.url,data:{msg:'123'},transformRequest:transFormFactory.transForm,headers:{'Content-Type': 'application/x-www-form-urlencoded'}}).success(function (data) {
+                $scope.content = data;
+            });
+        };
+    }]);
+</script>
+
+</body>
+</html>
