@@ -1,0 +1,17 @@
+Test\Utils\StreamUtil.class
+com\example\testproject\Controller\TestController.class
+com\example\testproject\config\SpringMvcConfigure.class
+com\example\testproject\TestProjectApplication.class
+Test\SeleniumTest.class
+Test\Controller\CarShowController.class
+com\example\testproject\kafka\Producer.class
+com\example\testproject\kafka\Consumer.class
+com\example\testproject\mybatismapper\Transaction_I.class
+Test\TestApplication.class
+Test\Service\CarShowsProcessor.class
+Test\Model\Car.class
+com\example\testproject\mybatismapper\TransactionDAO.class
+Test\Model\CarShow.class
+com\example\testproject\kafka\KafkaController.class
+com\example\testproject\mybatismapper\SpringBootVFSConfigure.class
+com\example\testproject\mybatismapper\Transaction.class

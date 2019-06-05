@@ -1,0 +1,2658 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- edited with XMLSPY v2004 rel. 4 U (http://www.xmlspy.com) by Paul Hawthorne (Servicec & Systems Solutions Ltd) -->
+<xs:schema elementFormDefault="qualified" attributeFormDefault="unqualified" version="12.00.00" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:attribute name="AccessArrangements">
+		<xs:simpleType>
+			<xs:restriction base="MarketFreeText_Type">
+				<xs:maxLength value="100"/>
+				<xs:whiteSpace value="preserve"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="AccessInstructionsText" type="NameType"/>
+	<xs:attribute name="ActualUsageFactor">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="15"/>
+				<xs:fractionDigits value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:complexType name="AddressType">
+		<xs:attribute ref="UnitNo" use="optional"/>
+		<xs:attribute ref="AddrLine1" use="optional"/>
+		<xs:attribute ref="AddrLine2" use="optional"/>
+		<xs:attribute ref="HouseNo" use="optional"/>
+		<xs:attribute ref="Street" use="optional"/>
+		<xs:attribute ref="AddrLine4" use="optional"/>
+		<xs:attribute ref="AddrLine5" use="optional"/>
+		<xs:attribute ref="PostCode" use="optional"/>
+		<xs:attribute ref="City" use="optional"/>
+		<xs:attribute ref="CountyIreland" use="optional"/>
+		<xs:attribute ref="Country" use="optional"/>
+	</xs:complexType>
+	<xs:attribute name="AddrLine1" type="NameType"/>
+	<xs:attribute name="AddrLine2" type="NameType"/>
+	<xs:attribute name="AddrLine4" type="NameType"/>
+	<xs:attribute name="AddrLine5" type="NameType"/>
+	<xs:attribute name="AggregatedConsumption" type="DemandQuantityType"/>
+	<xs:attribute name="AlertFlag">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:enumeration value="VI"/>
+				<xs:enumeration value="VV"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="AmountDisputedTotal">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="13"/>
+				<xs:fractionDigits value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="AppointmentDate" type="xs:date"/>
+	<xs:attribute name="AppointmentID" type="AppointmentID_Type"/>
+	<xs:simpleType name="AppointmentID_Type">
+		<xs:restriction base="xs:string">
+			<xs:length value="10"/>
+			<xs:pattern value="2[0-9]{9}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="AppointmentRejectionReason">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+				<xs:enumeration value="AR01"/>
+				<xs:enumeration value="AR02"/>
+				<xs:enumeration value="AR03"/>
+				<xs:enumeration value="AR04"/>
+				<xs:enumeration value="AR05"/>
+				<xs:enumeration value="AR06"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="AppointmentTimeSlot">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="3"/>
+				<xs:enumeration value="A01"/>
+				<xs:enumeration value="A02"/>
+				<xs:enumeration value="A03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="BillingEndDate" type="xs:date"/>
+	<xs:attribute name="BillingStartDate" type="xs:date"/>
+	<xs:attribute name="BillingValue">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="16"/>
+				<xs:fractionDigits value="7"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="BusinessReferenceNumber_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="35"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="CalculationDate" type="xs:date"/>
+	<xs:attribute name="CancellationAgreementFlag" type="Flag_Type"/>
+	<xs:attribute name="CancellationReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:enumeration value="CR"/>
+				<xs:enumeration value="ME"/>
+				<xs:enumeration value="OS"/>
+				<xs:enumeration value="SE"/>
+				<xs:enumeration value="TO"/>
+				<xs:enumeration value="CD"/>
+				<xs:enumeration value="DE"/>
+				<xs:enumeration value="NR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ChangeMeterAddressFlag" type="Flag_Type"/>
+	<xs:element name="ChangeOfTenancyHistory">
+		<xs:complexType>
+			<xs:attribute name="PreviousSupplier" type="PreviousSupplier_Type" use="required"/>
+			<xs:attribute name="PreviousAccountNumber" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="20"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="PreviousMPRN" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="MPRN_Type"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="PreviousAddress" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:maxLength value="256"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="ChangeOfUsageCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="03"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ChangeOfUsageFlag" type="Flag_Type"/>
+	<xs:attribute name="ChannelCount">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="6"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="City" type="NameType"/>
+	<xs:attribute name="Comments">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="254"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="CompanyAuthorisedOfficer" type="NameType"/>
+	<xs:element name="CompletionRequirementsDetails">
+		<xs:complexType>
+			<xs:attribute ref="ProvAccCompletionRequirementCode" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="COName" type="NameType"/>
+	<xs:attribute name="ConnectionSystemCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="10"/>
+				<xs:enumeration value="DSO_GRID"/>
+				<xs:enumeration value="TSO_GRID"/>
+				<xs:enumeration value="NIE TD"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ConsecutiveNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="Consumption" type="ReadingType"/>
+	<xs:complexType name="ContactDetailsType">
+		<xs:sequence>
+			<xs:element name="PhoneOne" type="PhoneType" minOccurs="0"/>
+			<xs:element name="PhoneTwo" type="PhoneType" minOccurs="0"/>
+			<xs:element name="Fax" type="PhoneType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute ref="Email" use="optional"/>
+	</xs:complexType>
+	<xs:attribute name="ContactName" type="NameType"/>
+	<xs:attribute name="COS_EstimateAcceptableFlag" type="Flag_Type"/>
+	<xs:attribute name="COS_ReadArrangementCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="CR"/>
+				<xs:enumeration value="DR"/>
+				<xs:enumeration value="MC"/>
+				<xs:enumeration value="SC"/>
+				<xs:enumeration value="SP"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="COT_LE_Flag" type="Flag_Type"/>
+	<xs:attribute name="Country">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="GB"/>
+				<xs:enumeration value="IE"/>
+				<xs:enumeration value="AD"/>
+				<xs:enumeration value="AE"/>
+				<xs:enumeration value="AF"/>
+				<xs:enumeration value="AG"/>
+				<xs:enumeration value="AI"/>
+				<xs:enumeration value="AL"/>
+				<xs:enumeration value="AM"/>
+				<xs:enumeration value="AN"/>
+				<xs:enumeration value="AO"/>
+				<xs:enumeration value="AQ"/>
+				<xs:enumeration value="AR"/>
+				<xs:enumeration value="AS"/>
+				<xs:enumeration value="AT"/>
+				<xs:enumeration value="AU"/>
+				<xs:enumeration value="AW"/>
+				<xs:enumeration value="AZ"/>
+				<xs:enumeration value="BA"/>
+				<xs:enumeration value="BB"/>
+				<xs:enumeration value="BD"/>
+				<xs:enumeration value="BE"/>
+				<xs:enumeration value="BF"/>
+				<xs:enumeration value="BG"/>
+				<xs:enumeration value="BH"/>
+				<xs:enumeration value="BI"/>
+				<xs:enumeration value="BJ"/>
+				<xs:enumeration value="BM"/>
+				<xs:enumeration value="BN"/>
+				<xs:enumeration value="BO"/>
+				<xs:enumeration value="BR"/>
+				<xs:enumeration value="BS"/>
+				<xs:enumeration value="BT"/>
+				<xs:enumeration value="BV"/>
+				<xs:enumeration value="BW"/>
+				<xs:enumeration value="BY"/>
+				<xs:enumeration value="BZ"/>
+				<xs:enumeration value="CA"/>
+				<xs:enumeration value="CC"/>
+				<xs:enumeration value="CD"/>
+				<xs:enumeration value="CF"/>
+				<xs:enumeration value="CG"/>
+				<xs:enumeration value="CH"/>
+				<xs:enumeration value="CI"/>
+				<xs:enumeration value="CK"/>
+				<xs:enumeration value="CL"/>
+				<xs:enumeration value="CM"/>
+				<xs:enumeration value="CN"/>
+				<xs:enumeration value="CO"/>
+				<xs:enumeration value="CR"/>
+				<xs:enumeration value="CU"/>
+				<xs:enumeration value="CV"/>
+				<xs:enumeration value="CX"/>
+				<xs:enumeration value="CY"/>
+				<xs:enumeration value="CZ"/>
+				<xs:enumeration value="DE"/>
+				<xs:enumeration value="DJ"/>
+				<xs:enumeration value="DK"/>
+				<xs:enumeration value="DM"/>
+				<xs:enumeration value="DO"/>
+				<xs:enumeration value="DZ"/>
+				<xs:enumeration value="EC"/>
+				<xs:enumeration value="EE"/>
+				<xs:enumeration value="EG"/>
+				<xs:enumeration value="EH"/>
+				<xs:enumeration value="ER"/>
+				<xs:enumeration value="ES"/>
+				<xs:enumeration value="ET"/>
+				<xs:enumeration value="FI"/>
+				<xs:enumeration value="FJ"/>
+				<xs:enumeration value="FK"/>
+				<xs:enumeration value="FM"/>
+				<xs:enumeration value="FO"/>
+				<xs:enumeration value="FR"/>
+				<xs:enumeration value="GA"/>
+				<xs:enumeration value="GD"/>
+				<xs:enumeration value="GE"/>
+				<xs:enumeration value="GF"/>
+				<xs:enumeration value="GH"/>
+				<xs:enumeration value="GI"/>
+				<xs:enumeration value="GL"/>
+				<xs:enumeration value="GM"/>
+				<xs:enumeration value="GN"/>
+				<xs:enumeration value="GP"/>
+				<xs:enumeration value="GQ"/>
+				<xs:enumeration value="GR"/>
+				<xs:enumeration value="GS"/>
+				<xs:enumeration value="GT"/>
+				<xs:enumeration value="GU"/>
+				<xs:enumeration value="GW"/>
+				<xs:enumeration value="GY"/>
+				<xs:enumeration value="HK"/>
+				<xs:enumeration value="HM"/>
+				<xs:enumeration value="HN"/>
+				<xs:enumeration value="HR"/>
+				<xs:enumeration value="HT"/>
+				<xs:enumeration value="HU"/>
+				<xs:enumeration value="ID"/>
+				<xs:enumeration value="IL"/>
+				<xs:enumeration value="IN"/>
+				<xs:enumeration value="IO"/>
+				<xs:enumeration value="IQ"/>
+				<xs:enumeration value="IR"/>
+				<xs:enumeration value="IS"/>
+				<xs:enumeration value="IT"/>
+				<xs:enumeration value="JM"/>
+				<xs:enumeration value="JO"/>
+				<xs:enumeration value="JP"/>
+				<xs:enumeration value="KE"/>
+				<xs:enumeration value="KG"/>
+				<xs:enumeration value="KH"/>
+				<xs:enumeration value="KI"/>
+				<xs:enumeration value="KM"/>
+				<xs:enumeration value="KN"/>
+				<xs:enumeration value="KP"/>
+				<xs:enumeration value="KR"/>
+				<xs:enumeration value="KW"/>
+				<xs:enumeration value="KY"/>
+				<xs:enumeration value="KZ"/>
+				<xs:enumeration value="LA"/>
+				<xs:enumeration value="LB"/>
+				<xs:enumeration value="LC"/>
+				<xs:enumeration value="LI"/>
+				<xs:enumeration value="LK"/>
+				<xs:enumeration value="LR"/>
+				<xs:enumeration value="LS"/>
+				<xs:enumeration value="LT"/>
+				<xs:enumeration value="LU"/>
+				<xs:enumeration value="LV"/>
+				<xs:enumeration value="LY"/>
+				<xs:enumeration value="MA"/>
+				<xs:enumeration value="MC"/>
+				<xs:enumeration value="MD"/>
+				<xs:enumeration value="MG"/>
+				<xs:enumeration value="MH"/>
+				<xs:enumeration value="MK"/>
+				<xs:enumeration value="ML"/>
+				<xs:enumeration value="MM"/>
+				<xs:enumeration value="MN"/>
+				<xs:enumeration value="MO"/>
+				<xs:enumeration value="MP"/>
+				<xs:enumeration value="MQ"/>
+				<xs:enumeration value="MR"/>
+				<xs:enumeration value="MS"/>
+				<xs:enumeration value="MT"/>
+				<xs:enumeration value="MU"/>
+				<xs:enumeration value="MV"/>
+				<xs:enumeration value="MW"/>
+				<xs:enumeration value="MX"/>
+				<xs:enumeration value="MY"/>
+				<xs:enumeration value="MZ"/>
+				<xs:enumeration value="NA"/>
+				<xs:enumeration value="NC"/>
+				<xs:enumeration value="NE"/>
+				<xs:enumeration value="NF"/>
+				<xs:enumeration value="NG"/>
+				<xs:enumeration value="NI"/>
+				<xs:enumeration value="NL"/>
+				<xs:enumeration value="NO"/>
+				<xs:enumeration value="NP"/>
+				<xs:enumeration value="NR"/>
+				<xs:enumeration value="NU"/>
+				<xs:enumeration value="NZ"/>
+				<xs:enumeration value="OM"/>
+				<xs:enumeration value="PA"/>
+				<xs:enumeration value="PE"/>
+				<xs:enumeration value="PF"/>
+				<xs:enumeration value="PG"/>
+				<xs:enumeration value="PH"/>
+				<xs:enumeration value="PK"/>
+				<xs:enumeration value="PL"/>
+				<xs:enumeration value="PM"/>
+				<xs:enumeration value="PN"/>
+				<xs:enumeration value="PR"/>
+				<xs:enumeration value="PT"/>
+				<xs:enumeration value="PW"/>
+				<xs:enumeration value="PY"/>
+				<xs:enumeration value="QA"/>
+				<xs:enumeration value="RE"/>
+				<xs:enumeration value="RO"/>
+				<xs:enumeration value="RU"/>
+				<xs:enumeration value="RW"/>
+				<xs:enumeration value="SA"/>
+				<xs:enumeration value="SB"/>
+				<xs:enumeration value="SC"/>
+				<xs:enumeration value="SD"/>
+				<xs:enumeration value="SE"/>
+				<xs:enumeration value="SG"/>
+				<xs:enumeration value="SH"/>
+				<xs:enumeration value="SI"/>
+				<xs:enumeration value="SJ"/>
+				<xs:enumeration value="SK"/>
+				<xs:enumeration value="SL"/>
+				<xs:enumeration value="SM"/>
+				<xs:enumeration value="SN"/>
+				<xs:enumeration value="SO"/>
+				<xs:enumeration value="SR"/>
+				<xs:enumeration value="ST"/>
+				<xs:enumeration value="SV"/>
+				<xs:enumeration value="SY"/>
+				<xs:enumeration value="SZ"/>
+				<xs:enumeration value="TC"/>
+				<xs:enumeration value="TD"/>
+				<xs:enumeration value="TF"/>
+				<xs:enumeration value="TG"/>
+				<xs:enumeration value="TH"/>
+				<xs:enumeration value="TJ"/>
+				<xs:enumeration value="TK"/>
+				<xs:enumeration value="TM"/>
+				<xs:enumeration value="TN"/>
+				<xs:enumeration value="TO"/>
+				<xs:enumeration value="TP"/>
+				<xs:enumeration value="TR"/>
+				<xs:enumeration value="TT"/>
+				<xs:enumeration value="TV"/>
+				<xs:enumeration value="TW"/>
+				<xs:enumeration value="TZ"/>
+				<xs:enumeration value="UA"/>
+				<xs:enumeration value="UG"/>
+				<xs:enumeration value="UM"/>
+				<xs:enumeration value="US"/>
+				<xs:enumeration value="UY"/>
+				<xs:enumeration value="UZ"/>
+				<xs:enumeration value="VA"/>
+				<xs:enumeration value="VC"/>
+				<xs:enumeration value="VE"/>
+				<xs:enumeration value="VG"/>
+				<xs:enumeration value="VI"/>
+				<xs:enumeration value="VN"/>
+				<xs:enumeration value="VU"/>
+				<xs:enumeration value="WF"/>
+				<xs:enumeration value="WS"/>
+				<xs:enumeration value="YE"/>
+				<xs:enumeration value="YT"/>
+				<xs:enumeration value="YU"/>
+				<xs:enumeration value="ZA"/>
+				<xs:enumeration value="ZM"/>
+				<xs:enumeration value="ZW"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="CountyIreland">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="AM"/>
+				<xs:enumeration value="AT"/>
+				<xs:enumeration value="DE"/>
+				<xs:enumeration value="LY"/>
+				<xs:enumeration value="DN"/>
+				<xs:enumeration value="FM"/>
+				<xs:enumeration value="TY"/>
+				<xs:enumeration value="CE"/>
+				<xs:enumeration value="CK"/>
+				<xs:enumeration value="CN"/>
+				<xs:enumeration value="CW"/>
+				<xs:enumeration value="DB"/>
+				<xs:enumeration value="DL"/>
+				<xs:enumeration value="GW"/>
+				<xs:enumeration value="KE"/>
+				<xs:enumeration value="KK"/>
+				<xs:enumeration value="KY"/>
+				<xs:enumeration value="LD"/>
+				<xs:enumeration value="LH"/>
+				<xs:enumeration value="LK"/>
+				<xs:enumeration value="LM"/>
+				<xs:enumeration value="LS"/>
+				<xs:enumeration value="MH"/>
+				<xs:enumeration value="MN"/>
+				<xs:enumeration value="MO"/>
+				<xs:enumeration value="OY"/>
+				<xs:enumeration value="RN"/>
+				<xs:enumeration value="SO"/>
+				<xs:enumeration value="TP"/>
+				<xs:enumeration value="WD"/>
+				<xs:enumeration value="WH"/>
+				<xs:enumeration value="WW"/>
+				<xs:enumeration value="WX"/>
+				<xs:enumeration value="ZA"/>
+				<xs:enumeration value="ZB"/>
+				<xs:enumeration value="ZC"/>
+				<xs:enumeration value="ZD"/>
+				<xs:enumeration value="ZE"/>
+				<xs:enumeration value="ZF"/>
+				<xs:enumeration value="ZG"/>
+				<xs:enumeration value="ZH"/>
+				<xs:enumeration value="ZI"/>
+				<xs:enumeration value="ZJ"/>
+				<xs:enumeration value="ZK"/>
+				<xs:enumeration value="ZL"/>
+				<xs:enumeration value="ZM"/>
+				<xs:enumeration value="ZN"/>
+				<xs:enumeration value="ZO"/>
+				<xs:enumeration value="ZP"/>
+				<xs:enumeration value="ZQ"/>
+				<xs:enumeration value="ZR"/>
+				<xs:enumeration value="ZS"/>
+				<xs:enumeration value="ZT"/>
+				<xs:enumeration value="ZU"/>
+				<xs:enumeration value="ZV"/>
+				<xs:enumeration value="ZW"/>
+				<xs:enumeration value="ZX"/>
+				<xs:enumeration value="ZY"/>
+				<xs:enumeration value="ZZ"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="CountyState" type="NameType"/>
+	<xs:attribute name="CSC5YrEndDate" type="xs:date"/>
+	<xs:attribute name="CSCStartDate" type="xs:date"/>
+	<xs:attribute name="CurrentChargeableServiceCapacity">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="CustomerContactDetails" type="ContactDetailsType"/>
+	<xs:attribute name="CustomerDetailsChangedFlag" type="Flag_Type"/>
+	<xs:element name="CustomerName">
+		<xs:complexType>
+			<xs:attributeGroup ref="NameGroup"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attributeGroup name="CustomerRead_Group">
+		<xs:attribute ref="SerialNumber" use="optional"/>
+		<xs:attribute ref="MeterRegisterSequence" use="optional"/>
+		<xs:attribute ref="TimeslotCode" use="optional"/>
+		<xs:attribute ref="ReadingValue" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attribute name="CustomerServiceDetailsCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+				<xs:enumeration value="0001"/>
+				<xs:enumeration value="0002"/>
+				<xs:enumeration value="0003"/>
+				<xs:enumeration value="0004"/>
+				<xs:enumeration value="0005"/>
+				<xs:enumeration value="0006"/>
+				<xs:enumeration value="0007"/>
+				<xs:enumeration value="0008"/>
+				<xs:enumeration value="0009"/>
+				<xs:enumeration value="0010"/>
+				
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="CustomerServiceSpecialNeeds">
+		<xs:complexType>
+			<xs:attribute ref="CustomerServiceDetailsCode" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="DateOfVisit">
+		<xs:simpleType>
+			<xs:restriction base="xs:date"/>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DebitReEst" type="Flag_Type"/>
+	<xs:attribute name="DebtTransferFlag" type="Flag_Type"/>
+	<xs:element name="DelayDetails">
+		<xs:complexType>
+			<xs:attribute ref="DelayReasonCode" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="DelayReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="DE01"/>
+				<xs:enumeration value="DE02"/>
+				<xs:enumeration value="DE03"/>
+				<xs:enumeration value="DE04"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DeleteAccessInstructionsFlag" type="Flag_Type"/>
+	<xs:attribute name="DeleteCustomerServiceDetailsFlag" type="Flag_Type"/>
+	<xs:attribute name="DeleteMedicalEquipmentNeedsFlag" type="Flag_Type"/>
+	<xs:attribute name="DeleteMeterReaderPassword" type="Flag_Type"/>
+	<xs:attribute name="DeletePOBoxAddressFlag" type="Flag_Type"/>
+	<xs:simpleType name="DemandQuantityType">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="9"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="DeRegistrationReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="CUS"/>
+				<xs:enumeration value="PRM"/>
+				<xs:enumeration value="REM"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="DetailType">
+		<xs:restriction base="MarketFreeText_Type">
+			<xs:maxLength value="512"/>
+			<xs:whiteSpace value="preserve"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="DisplayOnExtranet" type="Flag_Type"/>
+	<xs:attribute name="DisputeReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="3"/>
+				<xs:enumeration value="SNR"/>
+				<xs:enumeration value="IBP"/>
+				<xs:enumeration value="IID"/>
+				<xs:enumeration value="ARE"/>
+				<xs:enumeration value="IMD"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DisputeRecordCount">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DLF_Code">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="5"/>
+				<xs:enumeration value="LV"/>
+				<xs:enumeration value="MV"/>
+				<xs:enumeration value="38KV"/>
+				<xs:enumeration value="110KV"/>
+				<xs:enumeration value="NIEHV"/>
+				<xs:enumeration value="NIHV"/>
+				<xs:enumeration value="NIMV"/>
+				<xs:enumeration value="NITV"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DUOS_Group">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="DG1"/>
+				<xs:enumeration value="DG2"/>
+				<xs:enumeration value="DG3"/>
+				<xs:enumeration value="DG4"/>
+				<xs:enumeration value="DG5"/>
+				<xs:enumeration value="DG5A"/>
+				<xs:enumeration value="DG5B"/>
+				<xs:enumeration value="DG6"/>
+				<xs:enumeration value="DG6A"/>
+				<xs:enumeration value="DG6B"/>
+				<xs:enumeration value="DG7"/>
+				<xs:enumeration value="DG7A"/>
+				<xs:enumeration value="DG7B"/>
+				<xs:enumeration value="DG8"/>
+				<xs:enumeration value="DG8A"/>
+				<xs:enumeration value="DG8B"/>
+				<xs:enumeration value="DG9"/>
+				<xs:enumeration value="DG9A"/>
+				<xs:enumeration value="DG9B"/>
+				<xs:enumeration value="DG10"/>
+				<xs:enumeration value="T011"/>
+				<xs:enumeration value="T012"/>
+				<xs:enumeration value="T014"/>
+				<xs:enumeration value="T015"/>
+				<xs:enumeration value="T016"/>
+				<xs:enumeration value="T021"/>
+				<xs:enumeration value="T022"/>
+				<xs:enumeration value="T024"/>
+				<xs:enumeration value="T025"/>
+				<xs:enumeration value="T026"/>
+				<xs:enumeration value="T031"/>
+				<xs:enumeration value="T032"/>
+				<xs:enumeration value="T033"/>
+				<xs:enumeration value="T034"/>
+				<xs:enumeration value="T035"/>
+				<xs:enumeration value="T041"/>
+				<xs:enumeration value="T042"/>
+				<xs:enumeration value="T043"/>
+				<xs:enumeration value="T044"/>
+				<xs:enumeration value="T045"/>
+				<xs:enumeration value="T046"/>
+				<xs:enumeration value="T047"/>
+				<xs:enumeration value="T048"/>
+				<xs:enumeration value="T050"/>
+				<xs:enumeration value="T052"/>
+				<xs:enumeration value="T053"/>
+				<xs:enumeration value="T054"/>
+				<xs:enumeration value="T056"/>
+				<xs:enumeration value="T057"/>
+				<xs:enumeration value="T058"/>
+				<xs:enumeration value="T061"/>
+				<xs:enumeration value="T062"/>
+				<xs:enumeration value="T063"/>
+				<xs:enumeration value="T101"/>
+				<xs:enumeration value="T102"/>
+				<xs:enumeration value="T103"/>
+				<xs:enumeration value="T201"/>
+				<xs:enumeration value="T202"/>
+				<xs:enumeration value="T203"/>
+				<xs:enumeration value="T301"/>
+				<xs:enumeration value="T302"/>
+				<xs:enumeration value="T303"/>
+				<xs:enumeration value="T502"/>
+				<xs:enumeration value="T503"/>
+				<xs:enumeration value="T504"/>
+				<xs:enumeration value="T505"/>
+				<xs:enumeration value="T506"/>
+				<xs:enumeration value="T507"/>
+				<xs:enumeration value="T710"/>
+				<xs:enumeration value="T711"/>
+				<xs:enumeration value="T712"/>
+				<xs:enumeration value="T713"/>
+				<xs:enumeration value="TCON"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DUOS_InvoiceItemNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="40"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="DUOS_InvoiceNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="16"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="EAI_Code">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="5"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="01100"/>
+				<xs:enumeration value="01200"/>
+				<xs:enumeration value="01300"/>
+				<xs:enumeration value="01400"/>
+				<xs:enumeration value="01500"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="02000"/>
+				<xs:enumeration value="05"/>
+				<xs:enumeration value="05000"/>
+				<xs:enumeration value="10"/>
+				<xs:enumeration value="10100"/>
+				<xs:enumeration value="10200"/>
+				<xs:enumeration value="10300"/>
+				<xs:enumeration value="11"/>
+				<xs:enumeration value="11100"/>
+				<xs:enumeration value="11200"/>
+				<xs:enumeration value="12"/>
+				<xs:enumeration value="12000"/>
+				<xs:enumeration value="13"/>
+				<xs:enumeration value="13100"/>
+				<xs:enumeration value="13200"/>
+				<xs:enumeration value="14"/>
+				<xs:enumeration value="14100"/>
+				<xs:enumeration value="14200"/>
+				<xs:enumeration value="14300"/>
+				<xs:enumeration value="14400"/>
+				<xs:enumeration value="14500"/>
+				<xs:enumeration value="15"/>
+				<xs:enumeration value="15100"/>
+				<xs:enumeration value="15200"/>
+				<xs:enumeration value="15300"/>
+				<xs:enumeration value="15400"/>
+				<xs:enumeration value="15500"/>
+				<xs:enumeration value="15600"/>
+				<xs:enumeration value="15700"/>
+				<xs:enumeration value="15800"/>
+				<xs:enumeration value="15900"/>
+				<xs:enumeration value="16"/>
+				<xs:enumeration value="16000"/>
+				<xs:enumeration value="17"/>
+				<xs:enumeration value="17100"/>
+				<xs:enumeration value="17200"/>
+				<xs:enumeration value="17300"/>
+				<xs:enumeration value="17400"/>
+				<xs:enumeration value="17500"/>
+				<xs:enumeration value="17600"/>
+				<xs:enumeration value="17700"/>
+				<xs:enumeration value="18"/>
+				<xs:enumeration value="18100"/>
+				<xs:enumeration value="18200"/>
+				<xs:enumeration value="18300"/>
+				<xs:enumeration value="19"/>
+				<xs:enumeration value="19100"/>
+				<xs:enumeration value="19200"/>
+				<xs:enumeration value="19300"/>
+				<xs:enumeration value="20"/>
+				<xs:enumeration value="20100"/>
+				<xs:enumeration value="20200"/>
+				<xs:enumeration value="20300"/>
+				<xs:enumeration value="20400"/>
+				<xs:enumeration value="20500"/>
+				<xs:enumeration value="21"/>
+				<xs:enumeration value="21100"/>
+				<xs:enumeration value="21200"/>
+				<xs:enumeration value="22"/>
+				<xs:enumeration value="22100"/>
+				<xs:enumeration value="22200"/>
+				<xs:enumeration value="22300"/>
+				<xs:enumeration value="23"/>
+				<xs:enumeration value="23100"/>
+				<xs:enumeration value="23200"/>
+				<xs:enumeration value="23300"/>
+				<xs:enumeration value="24"/>
+				<xs:enumeration value="24100"/>
+				<xs:enumeration value="24200"/>
+				<xs:enumeration value="24300"/>
+				<xs:enumeration value="24410"/>
+				<xs:enumeration value="24500"/>
+				<xs:enumeration value="24600"/>
+				<xs:enumeration value="24700"/>
+				<xs:enumeration value="25"/>
+				<xs:enumeration value="25100"/>
+				<xs:enumeration value="25200"/>
+				<xs:enumeration value="26"/>
+				<xs:enumeration value="26100"/>
+				<xs:enumeration value="26200"/>
+				<xs:enumeration value="26300"/>
+				<xs:enumeration value="26400"/>
+				<xs:enumeration value="26500"/>
+				<xs:enumeration value="26600"/>
+				<xs:enumeration value="26700"/>
+				<xs:enumeration value="26800"/>
+				<xs:enumeration value="27"/>
+				<xs:enumeration value="27100"/>
+				<xs:enumeration value="27200"/>
+				<xs:enumeration value="27300"/>
+				<xs:enumeration value="27400"/>
+				<xs:enumeration value="27500"/>
+				<xs:enumeration value="28"/>
+				<xs:enumeration value="28100"/>
+				<xs:enumeration value="28200"/>
+				<xs:enumeration value="28300"/>
+				<xs:enumeration value="28400"/>
+				<xs:enumeration value="28500"/>
+				<xs:enumeration value="28600"/>
+				<xs:enumeration value="28700"/>
+				<xs:enumeration value="29"/>
+				<xs:enumeration value="29100"/>
+				<xs:enumeration value="29200"/>
+				<xs:enumeration value="29300"/>
+				<xs:enumeration value="29400"/>
+				<xs:enumeration value="29500"/>
+				<xs:enumeration value="29600"/>
+				<xs:enumeration value="29700"/>
+				<xs:enumeration value="30"/>
+				<xs:enumeration value="30000"/>
+				<xs:enumeration value="31"/>
+				<xs:enumeration value="31100"/>
+				<xs:enumeration value="31200"/>
+				<xs:enumeration value="31300"/>
+				<xs:enumeration value="31400"/>
+				<xs:enumeration value="31500"/>
+				<xs:enumeration value="31600"/>
+				<xs:enumeration value="32"/>
+				<xs:enumeration value="32100"/>
+				<xs:enumeration value="32200"/>
+				<xs:enumeration value="32300"/>
+				<xs:enumeration value="33"/>
+				<xs:enumeration value="33100"/>
+				<xs:enumeration value="33200"/>
+				<xs:enumeration value="33300"/>
+				<xs:enumeration value="33400"/>
+				<xs:enumeration value="33500"/>
+				<xs:enumeration value="34"/>
+				<xs:enumeration value="34100"/>
+				<xs:enumeration value="34200"/>
+				<xs:enumeration value="34300"/>
+				<xs:enumeration value="35"/>
+				<xs:enumeration value="35100"/>
+				<xs:enumeration value="35200"/>
+				<xs:enumeration value="35300"/>
+				<xs:enumeration value="35400"/>
+				<xs:enumeration value="35500"/>
+				<xs:enumeration value="36"/>
+				<xs:enumeration value="36100"/>
+				<xs:enumeration value="36200"/>
+				<xs:enumeration value="36300"/>
+				<xs:enumeration value="36400"/>
+				<xs:enumeration value="36500"/>
+				<xs:enumeration value="36600"/>
+				<xs:enumeration value="37"/>
+				<xs:enumeration value="37100"/>
+				<xs:enumeration value="37200"/>
+				<xs:enumeration value="40"/>
+				<xs:enumeration value="40100"/>
+				<xs:enumeration value="40200"/>
+				<xs:enumeration value="40300"/>
+				<xs:enumeration value="41"/>
+				<xs:enumeration value="41000"/>
+				<xs:enumeration value="45"/>
+				<xs:enumeration value="45100"/>
+				<xs:enumeration value="45200"/>
+				<xs:enumeration value="45300"/>
+				<xs:enumeration value="45400"/>
+				<xs:enumeration value="45500"/>
+				<xs:enumeration value="50"/>
+				<xs:enumeration value="50100"/>
+				<xs:enumeration value="50200"/>
+				<xs:enumeration value="50300"/>
+				<xs:enumeration value="50400"/>
+				<xs:enumeration value="50500"/>
+				<xs:enumeration value="51"/>
+				<xs:enumeration value="51100"/>
+				<xs:enumeration value="51200"/>
+				<xs:enumeration value="51300"/>
+				<xs:enumeration value="51400"/>
+				<xs:enumeration value="51500"/>
+				<xs:enumeration value="51800"/>
+				<xs:enumeration value="51900"/>
+				<xs:enumeration value="52"/>
+				<xs:enumeration value="52100"/>
+				<xs:enumeration value="52200"/>
+				<xs:enumeration value="52300"/>
+				<xs:enumeration value="52400"/>
+				<xs:enumeration value="52500"/>
+				<xs:enumeration value="52600"/>
+				<xs:enumeration value="52700"/>
+				<xs:enumeration value="55"/>
+				<xs:enumeration value="55100"/>
+				<xs:enumeration value="55200"/>
+				<xs:enumeration value="55300"/>
+				<xs:enumeration value="55400"/>
+				<xs:enumeration value="55500"/>
+				<xs:enumeration value="60"/>
+				<xs:enumeration value="60100"/>
+				<xs:enumeration value="60200"/>
+				<xs:enumeration value="60300"/>
+				<xs:enumeration value="61"/>
+				<xs:enumeration value="61100"/>
+				<xs:enumeration value="61200"/>
+				<xs:enumeration value="62"/>
+				<xs:enumeration value="62100"/>
+				<xs:enumeration value="62200"/>
+				<xs:enumeration value="62300"/>
+				<xs:enumeration value="63"/>
+				<xs:enumeration value="63100"/>
+				<xs:enumeration value="63200"/>
+				<xs:enumeration value="63300"/>
+				<xs:enumeration value="63400"/>
+				<xs:enumeration value="64"/>
+				<xs:enumeration value="64100"/>
+				<xs:enumeration value="64200"/>
+				<xs:enumeration value="65"/>
+				<xs:enumeration value="65100"/>
+				<xs:enumeration value="65200"/>
+				<xs:enumeration value="66"/>
+				<xs:enumeration value="66000"/>
+				<xs:enumeration value="67"/>
+				<xs:enumeration value="67100"/>
+				<xs:enumeration value="67200"/>
+				<xs:enumeration value="70"/>
+				<xs:enumeration value="70100"/>
+				<xs:enumeration value="70200"/>
+				<xs:enumeration value="70300"/>
+				<xs:enumeration value="71"/>
+				<xs:enumeration value="71100"/>
+				<xs:enumeration value="71200"/>
+				<xs:enumeration value="71300"/>
+				<xs:enumeration value="71400"/>
+				<xs:enumeration value="72"/>
+				<xs:enumeration value="72100"/>
+				<xs:enumeration value="72200"/>
+				<xs:enumeration value="72300"/>
+				<xs:enumeration value="72400"/>
+				<xs:enumeration value="72500"/>
+				<xs:enumeration value="72600"/>
+				<xs:enumeration value="73"/>
+				<xs:enumeration value="73100"/>
+				<xs:enumeration value="73200"/>
+				<xs:enumeration value="74"/>
+				<xs:enumeration value="74100"/>
+				<xs:enumeration value="74200"/>
+				<xs:enumeration value="74400"/>
+				<xs:enumeration value="74500"/>
+				<xs:enumeration value="74600"/>
+				<xs:enumeration value="74700"/>
+				<xs:enumeration value="74800"/>
+				<xs:enumeration value="75"/>
+				<xs:enumeration value="75100"/>
+				<xs:enumeration value="75200"/>
+				<xs:enumeration value="75300"/>
+				<xs:enumeration value="80"/>
+				<xs:enumeration value="80100"/>
+				<xs:enumeration value="80200"/>
+				<xs:enumeration value="80300"/>
+				<xs:enumeration value="80400"/>
+				<xs:enumeration value="85"/>
+				<xs:enumeration value="85100"/>
+				<xs:enumeration value="85200"/>
+				<xs:enumeration value="85300"/>
+				<xs:enumeration value="90"/>
+				<xs:enumeration value="90000"/>
+				<xs:enumeration value="91"/>
+				<xs:enumeration value="91100"/>
+				<xs:enumeration value="91200"/>
+				<xs:enumeration value="91300"/>
+				<xs:enumeration value="92"/>
+				<xs:enumeration value="92100"/>
+				<xs:enumeration value="92200"/>
+				<xs:enumeration value="92300"/>
+				<xs:enumeration value="92400"/>
+				<xs:enumeration value="92500"/>
+				<xs:enumeration value="92600"/>
+				<xs:enumeration value="92700"/>
+				<xs:enumeration value="93"/>
+				<xs:enumeration value="93000"/>
+				<xs:enumeration value="95"/>
+				<xs:enumeration value="95000"/>
+				<xs:enumeration value="96"/>
+				<xs:enumeration value="96000"/>
+				<xs:enumeration value="97"/>
+				<xs:enumeration value="97000"/>
+				<xs:enumeration value="98"/>
+				<xs:enumeration value="98000"/>
+				<xs:enumeration value="99"/>
+				<xs:enumeration value="99000"/>
+				<xs:enumeration value="99999"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="EffectiveFromDate" type="xs:date"/>
+	<xs:attribute name="Email">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="70"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="EMailType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="8"/>
+			<xs:maxLength value="92"/>
+			<xs:pattern value="[A-Za-z0-9.\-_]{2,30}[@][A-Za-z0-9.\-_]{2,30}\.[A-Za-z0-9.\-_]{2,30}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="EndPeriodTime" type="xs:dateTime"/>
+	<xs:attribute name="EndTime" type="xs:dateTime"/>
+	<xs:simpleType name="EnergyCharge_Type">
+		<xs:restriction base="xs:decimal">
+			<xs:fractionDigits value="2"/>
+			<xs:totalDigits value="13"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="ErrorCategoryCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="NRE"/>
+				<xs:enumeration value="REV"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ErrorDescription">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="1000"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="EssentialPlantFlag" type="Flag_Type"/>
+	<xs:attribute name="EstimatedConsumption" type="ReadingType"/>
+	<xs:attribute name="EstimatedUsageFactor">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="15"/>
+				<xs:fractionDigits value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ExchangedMeterReference">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="18"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="FirstName" type="NameType"/>
+	<xs:simpleType name="Flag_Type">
+		<xs:restriction base="xs:boolean"/>
+	</xs:simpleType>
+	<xs:attributeGroup name="GeneralCustomerRead_Group">
+		<xs:attributeGroup ref="CustomerRead_Group"/>
+		<xs:attribute ref="ReadTypeCode" use="required"/>
+	</xs:attributeGroup>
+	<xs:attribute name="GenerationUnitID">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="GenerationUnitMeteredGeneration" type="DemandQuantityType"/>
+	<xs:attribute name="GeneratorMPID">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+				<xs:pattern value="G[A-Z0-9]{3}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="GroupedMPRN" type="MPRN_Type"/>
+	<xs:attribute name="HouseNo">
+		<xs:simpleType>
+			<xs:restriction base="MarketFreeText_Type">
+				<xs:maxLength value="10"/>
+				<xs:whiteSpace value="preserve"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="InstalledValue">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="16"/>
+				<xs:fractionDigits value="7"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="IntervalPeriodTimestamp" type="xs:dateTime"/>
+	<xs:attribute name="IntervalStatusCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="VEST"/>
+				<xs:enumeration value="VCHG"/>
+				<xs:enumeration value="VI"/>
+				<xs:enumeration value="VVAK"/>
+				<xs:enumeration value="VNE"/>
+				<xs:enumeration value="VMSG"/>
+				<xs:enumeration value="VACH"/>
+				<xs:enumeration value="VDAT"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="IntervalType">
+		<xs:restriction base="xs:int">
+			<xs:totalDigits value="4"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="IntervalValue" type="ReadingTypeNew"/>
+	<xs:attribute name="IssueDate" type="xs:date"/>
+	<xs:simpleType name="KeypadPremiseNumber_Type">
+		<xs:restriction base="xs:string">
+			<xs:length value="19"/>
+			<xs:pattern value="[0-9]{19}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="KeypadPremisesNumber" type="KeypadPremiseNumber_Type"/>
+	<xs:attribute name="LastActualReadDate" type="xs:date"/>
+	<xs:attribute name="LastName" type="NameType"/>
+	<xs:attribute name="LoadFactorCode" type="LoadFactorCodeType"/>
+	<xs:simpleType name="LoadFactorCodeType">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:enumeration value="LF1"/>
+			<xs:enumeration value="LF2"/>
+			<xs:enumeration value="LF3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="LoadFactorNewCode" type="LoadFactorCodeType"/>
+	<xs:attribute name="LoadProfileCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="03"/>
+				<xs:enumeration value="04"/>
+				<xs:enumeration value="05"/>
+				<xs:enumeration value="06"/>
+				<xs:enumeration value="07"/>
+				<xs:enumeration value="08"/>
+				<xs:enumeration value="09"/>
+				<xs:enumeration value="10"/>
+				<xs:enumeration value="11"/>
+				<xs:enumeration value="12"/>
+				<xs:enumeration value="13"/>
+				<xs:enumeration value="14"/>
+				<xs:enumeration value="15"/>
+				<xs:enumeration value="16"/>
+				<xs:enumeration value="17"/>
+				<xs:enumeration value="18"/>
+				<xs:enumeration value="19"/>
+				<xs:enumeration value="20"/>
+				<xs:enumeration value="21"/>
+				<xs:enumeration value="22"/>
+				<xs:enumeration value="23"/>
+				<xs:enumeration value="801"/>
+				<xs:enumeration value="802"/>
+				<xs:enumeration value="803"/>
+				<xs:enumeration value="804"/>
+				<xs:enumeration value="805"/>
+				<xs:enumeration value="806"/>
+				<xs:enumeration value="807"/>
+				<xs:enumeration value="808"/>
+				<xs:enumeration value="880"/>
+				<xs:enumeration value="890"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="LongTermVacantIndicatorFlag" type="Flag_Type"/>
+	<xs:attribute name="LossAdjustedAggregatedConsumption" type="DemandQuantityType"/>
+	<xs:attribute name="LossAdjustedGenerationUnitMeteredGeneration" type="DemandQuantityType"/>
+	<xs:simpleType name="MarketFreeText_Type">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Za-z0-9 ,.@!()|';:/?%*#+_=\-\\\{\}\[\]&lt;&gt;&amp;&quot;]{0,}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MarketRole_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+			<xs:enumeration value="DSO"/>
+			<xs:enumeration value="SSA"/>
+			<xs:enumeration value="TSO"/>
+			<xs:enumeration value="TDO"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="MarketRoleId" type="MarketRole_Type"/>
+	<xs:attribute name="MaximumExportCapacity">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MaximumImportCapacity">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeasuredQuantity">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="8"/>
+				<xs:fractionDigits value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MedicalEquipmentDetailsCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="0003"/>
+				<xs:enumeration value="0004"/>
+				<xs:enumeration value="0005"/>
+				<xs:enumeration value="OC"/>
+				<xs:enumeration value="SP"/>
+				<xs:enumeration value="HD"/>
+				<xs:enumeration value="NP"/>
+				<xs:enumeration value="EH"/>
+				<xs:enumeration value="CL"/>
+				<xs:enumeration value="PN"/>
+				<xs:enumeration value="PV"/>
+				<xs:enumeration value="VT"/>
+				<xs:enumeration value="NB"/>
+				<xs:enumeration value="EM"/>
+				<xs:enumeration value="SL"/>
+				<xs:enumeration value="MS"/>
+				<xs:enumeration value="FR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="MessageHeader">
+		<xs:complexType>
+			<xs:attribute ref="MessageTypeCode" use="required"/>
+			<xs:attribute name="VersionNumber" type="VersionNumber_Type" use="required"/>
+			<xs:attribute name="MarketTimestamp" type="xs:dateTime" use="required"/>
+			<xs:attribute name="SenderID" type="PartyIDType" use="required"/>
+			<xs:attribute name="RecipientID" type="PartyIDType" use="required"/>
+			<xs:attribute name="TxRefNbr" type="TransactionReference_Type" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="MessageStatusCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="1"/>
+				<xs:enumeration value="A"/>
+				<xs:enumeration value="R"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MessageTypeCode" type="MessageTypeCode_Type"/>
+	<xs:simpleType name="MessageTypeCode_Type">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="3"/>
+			<xs:maxLength value="4"/>
+			<xs:pattern value="[0-9]{3}[A-Z]{0,1}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="MeterCategoryCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="15"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterConfigurationCode" type="MeterConfigurationCode_Type"/>
+	<xs:simpleType name="MeterConfigurationCode_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="10"/>
+			<xs:enumeration value="H050"/>
+			<xs:enumeration value="H100"/>
+			<xs:enumeration value="H101"/>
+			<xs:enumeration value="MCC01"/>
+			<xs:enumeration value="MCC02"/>
+			<xs:enumeration value="MCC03"/>
+			<xs:enumeration value="MCC04"/>
+			<xs:enumeration value="MCC05"/>
+			<xs:enumeration value="MCC06"/>
+			<xs:enumeration value="MCC07"/>
+			<xs:enumeration value="MCC08"/>
+			<xs:enumeration value="MCC09"/>
+			<xs:enumeration value="MCC10"/>
+			<xs:enumeration value="MCC11"/>
+			<xs:enumeration value="MCC50"/>
+			<xs:enumeration value="MCC51"/>
+			<xs:enumeration value="MCC53"/>
+			<xs:enumeration value="MCC57"/>
+			<xs:enumeration value="MCC58"/>
+			<xs:enumeration value="MCC59"/>
+			<xs:enumeration value="MCC60"/>
+			<xs:enumeration value="MCC61"/>
+			<xs:enumeration value="MCC62"/>
+			<xs:enumeration value="MCC63"/>
+			<xs:enumeration value="MCC64"/>
+			<xs:enumeration value="MCC65"/>
+			<xs:enumeration value="MCC67"/>
+			<xs:enumeration value="MCC68"/>
+			<xs:enumeration value="MCC70"/>
+			<xs:enumeration value="MCC71"/>
+			<xs:enumeration value="MCC72"/>
+			<xs:enumeration value="MCC73"/>
+			<xs:enumeration value="MCC74"/>
+			<xs:enumeration value="MCC75"/>
+			<xs:enumeration value="MCC76"/>
+			<xs:enumeration value="MCC77"/>
+			<xs:enumeration value="MCC78"/>
+			<xs:enumeration value="MCC79"/>
+			<xs:enumeration value="N001"/>
+			<xs:enumeration value="N002"/>
+			<xs:enumeration value="N003"/>
+			<xs:enumeration value="N004"/>
+			<xs:enumeration value="N005"/>
+			<xs:enumeration value="N006"/>
+			<xs:enumeration value="N007"/>
+			<xs:enumeration value="N008"/>
+			<xs:enumeration value="N009"/>
+			<xs:enumeration value="N010"/>
+			<xs:enumeration value="N011"/>
+			<xs:enumeration value="N012"/>
+			<xs:enumeration value="N040"/>
+			<xs:enumeration value="N041"/>
+			<xs:enumeration value="N042"/>
+			<xs:enumeration value="N043"/>
+			<xs:enumeration value="N044"/>
+			<xs:enumeration value="N045"/>
+			<xs:enumeration value="N046"/>
+			<xs:enumeration value="N047"/>
+			<xs:enumeration value="N061"/>
+			<xs:enumeration value="N062"/>
+			<xs:enumeration value="N063"/>
+			<xs:enumeration value="N064"/>
+			<xs:enumeration value="N065"/>
+			<xs:enumeration value="N066"/>
+			<xs:enumeration value="N067"/>
+			<xs:enumeration value="N068"/>
+			<xs:enumeration value="N098"/>
+			<xs:enumeration value="N099"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MeterIDConsumption_Type">
+		<xs:sequence>
+			<xs:element name="RegisterLevelInfo" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute ref="MeterRegisterSequence" use="required"/>
+					<xs:attribute ref="TimeslotCode" use="required"/>
+					<xs:attribute ref="UOM_Code" use="required"/>
+					<xs:attribute ref="MeterMultiplier" use="required"/>
+					<xs:attribute ref="ReadingValue" use="required"/>
+					<xs:attribute ref="ReadReasonCode" use="required"/>
+					<xs:attribute ref="ReadTypeCode" use="required"/>
+					<xs:attribute ref="PreviousReadDate" use="required"/>
+					<xs:attribute ref="Consumption" use="optional"/>
+					<xs:attribute ref="RegisterTypeCode" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="MeterCategoryCode" use="optional"/>
+		<xs:attribute ref="SerialNumber" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="MeterIDReadStatus_Type">
+		<xs:sequence>
+			<xs:element name="RegisterLevelInfo" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute ref="MeterRegisterSequence" use="required"/>
+					<xs:attribute ref="TimeslotCode" use="required"/>
+					<xs:attribute ref="UOM_Code" use="required"/>
+					<xs:attribute ref="MeterMultiplier" use="required"/>
+					<xs:attribute ref="ReadingValue" use="required"/>
+					<xs:attribute ref="ReadReasonCode" use="required"/>
+					<xs:attribute ref="ReadTypeCode" use="required"/>
+					<xs:attribute ref="PreviousReadDate" use="required"/>
+					<xs:attribute ref="Consumption" use="optional"/>
+					<xs:attribute ref="ReadStatusCode" use="required"/>
+					<xs:attribute ref="RegisterTypeCode" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute ref="MeterCategoryCode" use="optional"/>
+		<xs:attribute ref="SerialNumber" use="required"/>
+	</xs:complexType>
+	<xs:attribute name="MeteringInterval" type="IntervalType"/>
+	<xs:attribute name="MeterLocationCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="03"/>
+				<xs:enumeration value="04"/>
+				<xs:enumeration value="05"/>
+				<xs:enumeration value="06"/>
+				<xs:enumeration value="07"/>
+				<xs:enumeration value="08"/>
+				<xs:enumeration value="09"/>
+				<xs:enumeration value="10"/>
+				<xs:enumeration value="11"/>
+				<xs:enumeration value="12"/>
+				<xs:enumeration value="13"/>
+				<xs:enumeration value="14"/>
+				<xs:enumeration value="15"/>
+				<xs:enumeration value="16"/>
+				<xs:enumeration value="17"/>
+				<xs:enumeration value="18"/>
+				<xs:enumeration value="19"/>
+				<xs:enumeration value="20"/>
+				<xs:enumeration value="21"/>
+				<xs:enumeration value="22"/>
+				<xs:enumeration value="23"/>
+				<xs:enumeration value="24"/>
+				<xs:enumeration value="25"/>
+				<xs:enumeration value="26"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterMultiplier">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="12"/>
+				<xs:fractionDigits value="5"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="MeterPointAddress" type="AddressType"/>
+	<xs:attribute name="MeterPointAddressChangedFlag" type="Flag_Type"/>
+	<xs:attribute name="MeterPointStatusCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="2"/>
+				<xs:enumeration value="A"/>
+				<xs:enumeration value="C"/>
+				<xs:enumeration value="D"/>
+				<xs:enumeration value="E"/>
+				<xs:enumeration value="T"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterPointStatusReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="D01"/>
+				<xs:enumeration value="D02"/>
+				<xs:enumeration value="D03"/>
+				<xs:enumeration value="E01"/>
+				<xs:enumeration value="E02"/>
+				<xs:enumeration value="E03"/>
+				<xs:enumeration value="E04"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterReaderPassword">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterReaderRemarkCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:minLength value="2"/>
+				<xs:enumeration value="64"/>
+				<xs:enumeration value="65"/>
+				<xs:enumeration value="67"/>
+				<xs:enumeration value="68"/>
+				<xs:enumeration value="70"/>
+				<xs:enumeration value="71"/>
+				<xs:enumeration value="73"/>
+				<xs:enumeration value="75"/>
+				<xs:enumeration value="76"/>
+				<xs:enumeration value="77"/>
+				<xs:enumeration value="97"/>
+				<xs:enumeration value="102"/>
+				<xs:enumeration value="103"/>
+				<xs:enumeration value="104"/>
+				<xs:enumeration value="106"/>
+				<xs:enumeration value="107"/>
+				<xs:enumeration value="108"/>
+				<xs:enumeration value="109"/>
+				<xs:enumeration value="205"/>
+				<xs:enumeration value="209"/>
+				<xs:enumeration value="225"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterReaderRemarks">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="150"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:complexType name="MeterReaderRemarksType">
+		<xs:attribute ref="MeterReaderRemarkCode" use="required"/>
+		<xs:attribute ref="MeterReaderRemarks" use="optional"/>
+	</xs:complexType>
+	<xs:attribute name="MeterRegisterSequence">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MeterWorksTypeCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="3"/>
+				<xs:enumeration value="M01"/>
+				<xs:enumeration value="M02"/>
+				<xs:enumeration value="M03"/>
+				<xs:enumeration value="M04"/>
+				<xs:enumeration value="M05"/>
+				<xs:enumeration value="M06"/>
+				<xs:enumeration value="M07"/>
+				<xs:enumeration value="M08"/>
+				<xs:enumeration value="M09"/>
+				<xs:enumeration value="M10"/>
+				<xs:enumeration value="M11"/>
+				<xs:enumeration value="M12"/>
+				<xs:enumeration value="M14"/>
+				<xs:enumeration value="M15"/>
+				<xs:enumeration value="K01"/>
+				<xs:enumeration value="K02"/>
+				<xs:enumeration value="K05"/>
+				<xs:enumeration value="K06"/>
+				<xs:enumeration value="K08"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MICStartDate" type="xs:date"/>
+	<xs:attributeGroup name="MIM306_MPRNLevel_Group">
+		<xs:attribute ref="MPRN" use="required"/>
+		<xs:attribute ref="MPBusinessReference" use="optional"/>
+		<xs:attribute ref="NetworksReferenceNumber" use="required"/>
+		<xs:attribute ref="MeterPointStatusCode" use="required"/>
+		<xs:attribute ref="LoadProfileCode" use="required"/>
+		<xs:attribute ref="DUOS_Group" use="required"/>
+		<xs:attribute ref="EffectiveFromDate" use="required"/>
+		<xs:attribute ref="EssentialPlantFlag" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="MIM310_MPRNLevel_Group">
+		<xs:attribute ref="MPRN" use="required"/>
+		<xs:attribute ref="NetworksReferenceNumber" use="required"/>
+		<xs:attribute ref="MeterPointStatusCode" use="required"/>
+		<xs:attribute ref="LoadProfileCode" use="required"/>
+		<xs:attribute ref="DUOS_Group" use="required"/>
+		<xs:attribute ref="ReadDate" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="MIM700_BaseAttributes">
+		<xs:attribute ref="MPRN" use="required"/>
+		<xs:attribute ref="GroupedMPRN" use="optional"/>
+		<xs:attribute ref="LoadProfileCode" use="required"/>
+		<xs:attribute ref="DUOS_Group" use="required"/>
+		<xs:attribute ref="MeterPointStatusCode" use="required"/>
+		<xs:attribute ref="MeterConfigurationCode" use="required"/>
+		<xs:attribute ref="NetworksReferenceNumber" use="required"/>
+		<xs:attribute ref="TransactionReasonCode" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="MIM700_ConsumptionDetailAttributes">
+		<xs:attribute ref="ConsecutiveNumber" use="required"/>
+		<xs:attribute ref="UnmeteredTypeCode" use="required"/>
+		<xs:attribute ref="InstalledValue" use="required"/>
+		<xs:attribute ref="BillingValue" use="required"/>
+		<xs:attribute ref="UOM_Code" use="required"/>
+		<xs:attribute ref="RepetitionFactor" use="required"/>
+	</xs:attributeGroup>
+	<!--try change-->
+	<xs:attributeGroup name="MIM701_ConsumptionDetailAttributes">
+		<xs:attributeGroup ref="MIM700_ConsumptionDetailAttributes"/>
+		<xs:attribute ref="BillingStartDate" use="required"/>
+		<xs:attribute ref="BillingEndDate" use="required"/>
+		<xs:attribute ref="Consumption" use="required"/>
+	</xs:attributeGroup>
+	<!--end try-->
+	<xs:attributeGroup name="MIM700_RootAttributes">
+		<xs:attributeGroup ref="MIM700_BaseAttributes"/>
+		<xs:attribute ref="ActualUsageFactor" use="required"/>
+		<xs:attribute ref="MaximumImportCapacity" use="required"/>
+		<xs:attribute ref="PSOExemptionFlag" use="optional"/>
+		<xs:attribute ref="EffectiveFromDate" use="required"/>
+		<xs:attribute ref="EssentialPlantFlag" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="MIM701_RootAttributes">
+		<xs:attributeGroup ref="MIM700_BaseAttributes"/>
+		<xs:attribute ref="CalculationDate" use="required"/>
+		<xs:attribute ref="BillingStartDate" use="required"/>
+		<xs:attribute ref="BillingEndDate" use="required"/>
+		<xs:attribute ref="Consumption" use="required"/>
+	</xs:attributeGroup>
+	<xs:attribute name="MPBusinessReference" type="BusinessReferenceNumber_Type"/>
+	<xs:attribute name="MPRN">
+		<xs:simpleType>
+			<xs:restriction base="MPRN_Type">
+				<xs:length value="11"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="MPRN_Type">
+		<xs:restriction base="xs:string">
+			<xs:length value="11"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="MPRNCount">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="6"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="MPRNTally">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attributeGroup name="NameGroup">
+		<xs:attribute ref="Title" use="optional"/>
+		<xs:attribute ref="LastName" use="optional"/>
+		<xs:attribute ref="FirstName" use="optional"/>
+		<xs:attribute ref="OrganisationOne" use="optional"/>
+		<xs:attribute ref="OrganisationTwo" use="optional"/>
+		<xs:attribute ref="RegisteredCompanyNumber" use="optional"/>
+		<xs:attribute ref="TradingAs" use="optional"/>
+	</xs:attributeGroup>
+	<xs:simpleType name="NameType">
+		<xs:restriction base="MarketFreeText_Type">
+			<xs:maxLength value="40"/>
+			<xs:whiteSpace value="preserve"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="NetActiveDemandValue" type="ReadingTypeNew"/>
+	<xs:attribute name="NetworksReferenceNumber" type="BusinessReferenceNumber_Type"/>
+	<xs:complexType name="NewMetersRegisterLevelInfo_Type">
+		<xs:attribute ref="TimeslotCode" use="required"/>
+		<xs:attribute ref="MeterRegisterSequence" use="required"/>
+		<xs:attribute ref="UOM_Code" use="required"/>
+		<xs:attribute ref="MeterMultiplier" use="required"/>
+		<xs:attribute ref="ReadingValue" use="required"/>
+		<xs:attribute ref="ReadReasonCode" use="required"/>
+		<xs:attribute ref="ReadTypeCode" use="required"/>
+		<xs:attribute ref="PostDecimalDetails" use="required"/>
+		<xs:attribute ref="PreDecimalDetails" use="required"/>
+		<xs:attribute ref="RegisterTypeCode" use="required"/>
+	</xs:complexType>
+	<xs:attribute name="NIEP">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="10"/>
+				<xs:fractionDigits value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="NoReadCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="61"/>
+				<xs:enumeration value="62"/>
+				<xs:enumeration value="63"/>
+				<xs:enumeration value="64"/>
+				<xs:enumeration value="65"/>
+				<xs:enumeration value="66"/>
+				<xs:enumeration value="67"/>
+				<xs:enumeration value="68"/>
+				<xs:enumeration value="69"/>
+				<xs:enumeration value="70"/>
+				<xs:enumeration value="71"/>
+				<xs:enumeration value="72"/>
+				<xs:enumeration value="73"/>
+				<xs:enumeration value="74"/>
+				<xs:enumeration value="75"/>
+				<xs:enumeration value="76"/>
+				<xs:enumeration value="77"/>
+				<xs:enumeration value="78"/>
+				<xs:enumeration value="79"/>
+				<xs:enumeration value="80"/>
+				<xs:enumeration value="97"/>
+				<xs:enumeration value="104"/>
+				<xs:enumeration value="106"/>
+				<xs:enumeration value="107"/>
+				<xs:enumeration value="108"/>
+				<xs:enumeration value="109"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="NotificationAddress">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Address" type="StreetAddressType" minOccurs="0"/>
+				<xs:element ref="PostBox" minOccurs="0"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="ObjectionDate" type="xs:date"/>
+	<xs:attribute name="ObjectionReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="CD"/>
+				<xs:enumeration value="DE"/>
+				<xs:enumeration value="ET"/>
+				<xs:enumeration value="DCN"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ObservationCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="31"/>
+				<xs:enumeration value="32"/>
+				<xs:enumeration value="33"/>
+				<xs:enumeration value="34"/>
+				<xs:enumeration value="35"/>
+				<xs:enumeration value="36"/>
+				<xs:enumeration value="37"/>
+				<xs:enumeration value="38"/>
+				<xs:enumeration value="39"/>
+				<xs:enumeration value="40"/>
+				<xs:enumeration value="41"/>
+				<xs:enumeration value="42"/>
+				<xs:enumeration value="43"/>
+				<xs:enumeration value="44"/>
+				<xs:enumeration value="45"/>
+				<xs:enumeration value="46"/>
+				<xs:enumeration value="47"/>
+				<xs:enumeration value="48"/>
+				<xs:enumeration value="49"/>
+				<xs:enumeration value="50"/>
+				<xs:enumeration value="51"/>
+				<xs:enumeration value="52"/>
+				<xs:enumeration value="53"/>
+				<xs:enumeration value="77"/>
+				<xs:enumeration value="78"/>
+				<xs:enumeration value="81"/>
+				<xs:enumeration value="82"/>
+				<xs:enumeration value="83"/>
+				<xs:enumeration value="91"/>
+				<xs:enumeration value="92"/>
+				<xs:enumeration value="93"/>
+				<xs:enumeration value="94"/>
+				<xs:enumeration value="99"/>
+				<xs:enumeration value="102"/>
+				<xs:enumeration value="103"/>
+				<xs:enumeration value="205"/>
+				<xs:enumeration value="209"/>
+				<xs:enumeration value="213"/>
+				<xs:enumeration value="215"/>
+				<xs:enumeration value="217"/>
+				<xs:enumeration value="218"/>
+				<xs:enumeration value="219"/>
+				<xs:enumeration value="221"/>
+				<xs:enumeration value="223"/>
+				<xs:enumeration value="226"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ObservationDate" type="xs:date"/>
+	<xs:attributeGroup name="ObservationsDetails">
+		<xs:attribute ref="ObservationCode" use="required"/>
+		<xs:attribute ref="ObservationDate" use="required"/>
+		<xs:attribute ref="ObservationText" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attribute name="ObservationText" type="DetailType"/>
+	<xs:attribute name="OrderStatusCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="OrganisationOne" type="NameType"/>
+	<xs:attribute name="OrganisationTwo" type="NameType"/>
+	<xs:attribute name="OriginalMessage" type="xs:base64Binary"/>
+	<xs:attribute name="OriginalTxRefNbr" type="TransactionReference_Type"/>
+	<xs:attribute name="OutcomeReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="PartyContactDetails" type="ContactDetailsType"/>
+	<xs:simpleType name="PartyIDType">
+		<xs:union memberTypes="Supplier_Type MarketRole_Type"/>
+	</xs:simpleType>
+	<xs:attribute name="PercntConsAct">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="PercntMPRNEst">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:complexType name="PhoneType">
+		<xs:attribute name="Number" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="20"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="Extn" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:maxLength value="10"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:attribute name="POBoxNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="PostBox">
+		<xs:complexType>
+			<xs:attribute ref="POBoxNumber" use="required"/>
+			<xs:attribute ref="PostCode" use="optional"/>
+			<xs:attribute ref="City" use="optional"/>
+			<xs:attribute ref="Country" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="PostCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="PostDecimalDetails">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="1"/>
+				<xs:pattern value="[0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="PreDecimalDetails">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="2"/>
+				<xs:pattern value="[0-9]{2}"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="PrePaymentType">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="3"/>
+				<xs:pattern value="[P][0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="PreviousReadDate" type="xs:date"/>
+	<xs:simpleType name="PreviousSupplier_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="ProvAccCompletionRequirementCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="3"/>
+				<xs:enumeration value="CAA"/>
+				<xs:enumeration value="CCR"/>
+				<xs:enumeration value="ENA"/>
+				<xs:enumeration value="SIR"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="PSOExemptionFlag" type="Flag_Type"/>
+	<xs:attribute name="QueryFlag">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="1"/>
+				<xs:enumeration value="0"/>
+				<xs:enumeration value="1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ReadCycle">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ReadDate" type="xs:date"/>
+	<xs:attribute name="ReadFrequencyCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="Y"/>
+				<xs:enumeration value="H"/>
+				<xs:enumeration value="Q"/>
+				<xs:enumeration value="B"/>
+				<xs:enumeration value="M"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ReadingDataStatus">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="20"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ReadingNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ReadingReplacementVersionNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="2"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="ReadingType">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="15"/>
+			<xs:fractionDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ReadingTypeNew">
+		<xs:restriction base="xs:decimal">
+			<xs:totalDigits value="9"/>
+			<xs:fractionDigits value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="ReadingValue" type="ReadingType"/>
+	<xs:attribute name="ReadReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="2"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="04"/>
+				<xs:enumeration value="09"/>
+				<xs:enumeration value="10"/>
+				<xs:enumeration value="11"/>
+				<xs:enumeration value="13"/>
+				<xs:enumeration value="14"/>
+				<xs:enumeration value="16"/>
+				<xs:enumeration value="17"/>
+				<xs:enumeration value="18"/>
+				<xs:enumeration value="21"/>
+				<xs:enumeration value="22"/>
+				<xs:enumeration value="23"/>
+				<xs:enumeration value="26"/>
+				<xs:enumeration value="27"/>
+				<xs:enumeration value="28"/>
+				<xs:enumeration value="29"/>
+				<xs:enumeration value="95"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attributeGroup name="ReadScheduleDetails">
+		<xs:attribute ref="ReadFrequencyCode" use="optional"/>
+		<xs:attribute ref="ReadCycle" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attribute name="ReadStatusCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="RV"/>
+				<xs:enumeration value="RREL"/>
+				<xs:enumeration value="RWI"/>
+				<xs:enumeration value="REST"/>
+				<xs:enumeration value="RENS"/>
+				<xs:enumeration value=""/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="ReadTypeCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="2"/>
+				<xs:enumeration value="A"/>
+				<xs:enumeration value="CU"/>
+				<xs:enumeration value="E"/>
+				<xs:enumeration value="ED"/>
+				<xs:enumeration value="EF"/>
+				<xs:enumeration value="EP"/>
+				<xs:enumeration value="EU"/>
+				<xs:enumeration value="RC"/>
+				<xs:enumeration value="SC"/>
+				<xs:enumeration value="SU"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RecordCount">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RegisteredCompanyNumber">
+		<xs:simpleType>
+			<xs:restriction base="MarketFreeText_Type">
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RegisterTypeCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="03"/>
+				<xs:enumeration value="04"/>
+				<xs:enumeration value="05"/>
+				<xs:enumeration value="06"/>
+				<xs:enumeration value="07"/>
+				<xs:enumeration value="08"/>
+				<xs:enumeration value="09"/>
+				<xs:enumeration value="21"/>
+				<xs:enumeration value="22"/>
+				<xs:enumeration value="23"/>
+				<xs:enumeration value="24"/>
+				<xs:enumeration value="25"/>
+				<xs:enumeration value="26"/>
+				<xs:enumeration value="27"/>
+				<xs:enumeration value="28"/>
+				<xs:enumeration value="29"/>
+				<xs:enumeration value="30"/>
+				<xs:enumeration value="31"/>
+				<xs:enumeration value="32"/>
+				<xs:enumeration value="33"/>
+				<xs:enumeration value="34"/>
+				<xs:enumeration value="35"/>
+				<xs:enumeration value="36"/>
+				<xs:enumeration value="37"/>
+				<xs:enumeration value="38"/>
+				<xs:enumeration value="39"/>
+				<xs:enumeration value="40"/>
+				<xs:enumeration value="41"/>
+				<xs:enumeration value="42"/>
+				<xs:enumeration value="43"/>
+				<xs:enumeration value="44"/>
+				<xs:enumeration value="45"/>
+				<xs:enumeration value="46"/>
+				<xs:enumeration value="47"/>
+				<xs:enumeration value="50"/>
+				<xs:enumeration value="51"/>
+				<xs:enumeration value="52"/>
+				<xs:enumeration value="53"/>
+				<xs:enumeration value="60"/>
+				<xs:enumeration value="61"/>
+				<xs:enumeration value="62"/>
+				<xs:enumeration value="63"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RegistrationMeterConfigurationCode" type="MeterConfigurationCode_Type"/>
+	<xs:attribute name="RegistrationReceiptDate" type="xs:date"/>
+	<xs:element name="RejectionDetails">
+		<xs:complexType>
+			<xs:attribute ref="RejectReasonCode" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="RejectReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:minLength value="2"/>
+				<xs:enumeration value="AD1"/>
+				<xs:enumeration value="AD2"/>
+				<xs:enumeration value="AD3"/>
+				<xs:enumeration value="AD4"/>
+				<xs:enumeration value="AD5"/>
+				<xs:enumeration value="AD6"/>
+				<xs:enumeration value="AD7"/>
+				<xs:enumeration value="AD8"/>
+				<xs:enumeration value="AD9"/>
+				<xs:enumeration value="AGU"/>
+				<xs:enumeration value="AIM"/>
+				<xs:enumeration value="AMM"/>
+				<xs:enumeration value="CAN"/>
+				<xs:enumeration value="CCC"/>
+				<xs:enumeration value="CDR"/>
+				<xs:enumeration value="CIP"/>
+				<xs:enumeration value="CNM"/>
+				<xs:enumeration value="COL"/>
+				<xs:enumeration value="COS"/>
+				<xs:enumeration value="CUG"/>
+				<xs:enumeration value="DID"/>
+				<xs:enumeration value="DIJ"/>
+				<xs:enumeration value="DNA"/>
+				<xs:enumeration value="DSO"/>
+				<xs:enumeration value="DUP"/>
+				<xs:enumeration value="EXA"/>
+				<xs:enumeration value="HHM"/>
+				<xs:enumeration value="IA"/>
+				<xs:enumeration value="IAI"/>
+				<xs:enumeration value="ICD"/>
+				<xs:enumeration value="ICE"/>
+				<xs:enumeration value="ICL"/>
+				<xs:enumeration value="ICM"/>
+				<xs:enumeration value="ICU"/>
+				<xs:enumeration value="ICW"/>
+				<xs:enumeration value="IDT"/>
+				<xs:enumeration value="IEA"/>
+				<xs:enumeration value="IGA"/>
+				<xs:enumeration value="IGU"/>
+				<xs:enumeration value="IID"/>
+				<xs:enumeration value="IMF"/>
+				<xs:enumeration value="IMP"/>
+				<xs:enumeration value="IMS"/>
+				<xs:enumeration value="IMT"/>
+				<xs:enumeration value="IMW"/>
+				<xs:enumeration value="IRA"/>
+				<xs:enumeration value="IRC"/>
+				<xs:enumeration value="IRP"/>
+				<xs:enumeration value="IRQ"/>
+				<xs:enumeration value="IRR"/>
+				<xs:enumeration value="IRS"/>
+				<xs:enumeration value="IRT"/>
+				<xs:enumeration value="ITA"/>
+				<xs:enumeration value="ITF"/>
+				<xs:enumeration value="ITI"/>
+				<xs:enumeration value="IUM"/>
+				<xs:enumeration value="IUT"/>
+				<xs:enumeration value="IVS"/>
+				<xs:enumeration value="LO"/>
+				<xs:enumeration value="LOC"/>
+				<xs:enumeration value="MIA"/>
+				<xs:enumeration value="MIC"/>
+				<xs:enumeration value="MUL"/>
+				<xs:enumeration value="MWI"/>
+				<xs:enumeration value="MWO"/>
+				<xs:enumeration value="NID"/>
+				<xs:enumeration value="NMR"/>
+				<xs:enumeration value="NOR"/>
+				<xs:enumeration value="NQE"/>
+				<xs:enumeration value="NRC"/>
+				<xs:enumeration value="NRS"/>
+				<xs:enumeration value="NSA"/>
+				<xs:enumeration value="OAW"/>
+				<xs:enumeration value="PRM"/>
+				<xs:enumeration value="QHM"/>
+				<xs:enumeration value="REV"/>
+				<xs:enumeration value="RP"/>
+				<xs:enumeration value="SAR"/>
+				<xs:enumeration value="SNK"/>
+				<xs:enumeration value="SNR"/>
+				<xs:enumeration value="SSN"/>
+				<xs:enumeration value="SSS"/>
+				<xs:enumeration value="SUN"/>
+				<xs:enumeration value="SUS"/>
+				<xs:enumeration value="TCI"/>
+				<xs:enumeration value="TIM"/>
+				<xs:enumeration value="TMP"/>
+				<xs:enumeration value="TSR"/>
+				<xs:enumeration value="VUL"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:complexType name="RemovedMetersRegisterLevelInfo_Type">
+		<xs:attribute ref="TimeslotCode" use="required"/>
+		<xs:attribute ref="MeterRegisterSequence" use="required"/>
+		<xs:attribute ref="UOM_Code" use="required"/>
+		<xs:attribute ref="MeterMultiplier" use="required"/>
+		<xs:attribute ref="ReadingValue" use="required"/>
+		<xs:attribute ref="ReadReasonCode" use="required"/>
+		<xs:attribute ref="ReadTypeCode" use="required"/>
+		<xs:attribute ref="PreviousReadDate" use="required"/>
+		<xs:attribute ref="Consumption" use="optional"/>
+		<xs:attribute ref="PostDecimalDetails" use="optional"/>
+		<xs:attribute ref="PreDecimalDetails" use="optional"/>
+		<xs:attribute ref="RegisterTypeCode" use="required"/>
+		<xs:attribute ref="ReadStatusCode" use="required"/>
+	</xs:complexType>
+	<xs:attribute name="RepetitionFactor">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RequestStatusCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="A"/>
+				<xs:enumeration value="E"/>
+				<xs:enumeration value="I"/>
+				<xs:enumeration value="R"/>
+				<xs:enumeration value="W"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RequestStatusCode131">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="RequiredDate" type="xs:date"/>
+	<xs:complexType name="RetainedMetersRegisterLevelInfo_Type">
+		<xs:attribute ref="TimeslotCode" use="required"/>
+		<xs:attribute ref="MeterRegisterSequence" use="required"/>
+		<xs:attribute ref="UOM_Code" use="required"/>
+		<xs:attribute ref="MeterMultiplier" use="required"/>
+		<xs:attribute ref="ReadingValue" use="required"/>
+		<xs:attribute ref="ReadReasonCode" use="required"/>
+		<xs:attribute ref="ReadTypeCode" use="required"/>
+		<xs:attribute ref="PreviousReadDate" use="required"/>
+		<xs:attribute ref="Consumption" use="optional"/>
+		<xs:attribute ref="PostDecimalDetails" use="optional"/>
+		<xs:attribute ref="PreDecimalDetails" use="optional"/>
+		<xs:attribute ref="RegisterTypeCode" use="required"/>
+		<xs:attribute ref="ReadStatusCode" use="required"/>
+	</xs:complexType>
+	<xs:attribute name="SecurityAnswer">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="100"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="SecurityQuestion">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="2"/>
+				<xs:enumeration value="01"/>
+				<xs:enumeration value="02"/>
+				<xs:enumeration value="03"/>
+				<xs:enumeration value="04"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="SerialNumber">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="9"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="SettlementClassCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="1"/>
+				<xs:enumeration value="N"/>
+				<xs:enumeration value="P"/>
+				<xs:enumeration value="U"/>
+				<xs:enumeration value="X"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="SettlementDate" type="xs:date"/>
+	<xs:attribute name="SettlementInterval" type="IntervalType"/>
+	<xs:attribute name="SettlementRunIndicator">
+		<xs:simpleType>
+			<xs:restriction base="xs:int">
+				<xs:totalDigits value="2"/>
+				<xs:enumeration value="10"/>
+				<xs:enumeration value="20"/>
+				<xs:enumeration value="30"/>
+				<xs:enumeration value="40"/>
+				<xs:enumeration value="50"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:element name="SpecialNeedsDeleteDetails">
+		<xs:complexType>
+			<xs:attribute ref="CustomerServiceDetailsCode" use="required"/>
+			<xs:attribute ref="DeleteCustomerServiceDetailsFlag" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:attribute name="SSAC" type="SSAC_Type"/>
+	<xs:simpleType name="SSAC_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="1"/>
+			<xs:pattern value="[A-Z0-9]"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="B"/>
+			<xs:enumeration value="C"/>
+			<xs:enumeration value="D"/>
+			<xs:enumeration value="E"/>
+			<xs:enumeration value="F"/>
+			<xs:enumeration value="G"/>
+			<xs:enumeration value="H"/>
+			<xs:enumeration value="J"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="StartPeriodTime" type="xs:dateTime"/>
+	<xs:attribute name="StartTime" type="xs:dateTime"/>
+	<xs:attribute name="Street">
+		<xs:simpleType>
+			<xs:restriction base="MarketFreeText_Type">
+				<xs:maxLength value="60"/>
+				<xs:whiteSpace value="preserve"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:complexType name="StreetAddressType">
+		<xs:attribute ref="COName" use="optional"/>
+		<xs:attribute ref="UnitNo" use="optional"/>
+		<xs:attribute ref="AddrLine1" use="optional"/>
+		<xs:attribute ref="AddrLine2" use="optional"/>
+		<xs:attribute ref="HouseNo" use="optional"/>
+		<xs:attribute ref="Street" use="required"/>
+		<xs:attribute ref="AddrLine4" use="optional"/>
+		<xs:attribute ref="AddrLine5" use="optional"/>
+		<xs:attribute ref="PostCode" use="optional"/>
+		<xs:attribute ref="City" use="optional"/>
+		<xs:attribute ref="CountyIreland" use="optional"/>
+		<xs:attribute ref="CountyState" use="optional"/>
+		<xs:attribute ref="Country" use="optional"/>
+	</xs:complexType>
+	<xs:simpleType name="Supplier_Type">
+		<xs:restriction base="xs:string">
+			<xs:length value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Supplier_Unit_ID_Type">
+		<xs:restriction base="xs:string">
+			<xs:length value="9"/>
+			<xs:pattern value="SU_[0-9]{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="SupplierMPID">
+		<xs:simpleType>
+			<xs:restriction base="Supplier_Type">
+				<xs:length value="3"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="SupplierMPIDOld" type="Supplier_Type"/>
+	<xs:attribute name="SupplierUnitID" type="Supplier_Unit_ID_Type"/>
+	<xs:attribute name="SupplyAgreementFlag" type="Flag_Type"/>
+	<xs:attribute name="TariffConfigurationCode" type="TariffConfigurationCodeType"/>
+	<xs:simpleType name="TariffConfigurationCodeType">
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+			<xs:pattern value="[A-Z0-9]{2}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="TechnicalContactAuthorisedType">
+		<xs:sequence>
+			<xs:element ref="TechnicalContactDetails" minOccurs="0"/>
+			<xs:element name="Address" type="StreetAddressType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute ref="ContactName" use="optional"/>
+		<xs:attribute ref="CompanyAuthorisedOfficer" use="optional"/>
+	</xs:complexType>
+	<xs:element name="TechnicalContactDetails" type="ContactDetailsType"/>
+	<xs:complexType name="TechnicalContactType">
+		<xs:sequence>
+			<xs:element ref="TechnicalContactDetails" minOccurs="0"/>
+			<xs:element name="Address" type="StreetAddressType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute ref="ContactName" use="optional"/>
+	</xs:complexType>
+	<xs:attribute name="TimeCreated" type="xs:dateTime"/>
+	<xs:attribute name="TimeOfUse">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="00D"/>
+				<xs:enumeration value="00N"/>
+				<xs:enumeration value="24H"/>
+				<xs:enumeration value="D01"/>
+				<xs:enumeration value="D02"/>
+				<xs:enumeration value="ENI"/>
+				<xs:enumeration value="FR1"/>
+				<xs:enumeration value="FR2"/>
+				<xs:enumeration value="FR3"/>
+				<xs:enumeration value="FR4"/>
+				<xs:enumeration value="HT1"/>
+				<xs:enumeration value="HT2"/>
+				<xs:enumeration value="HT3"/>
+				<xs:enumeration value="KP5"/>
+				<xs:enumeration value="KP6"/>
+				<xs:enumeration value="KP7"/>
+				<xs:enumeration value="KP8"/>
+				<xs:enumeration value="N01"/>
+				<xs:enumeration value="N02"/>
+				<xs:enumeration value="N03"/>
+				<xs:enumeration value="N04"/>
+				<xs:enumeration value="R21"/>
+				<xs:enumeration value="R22"/>
+				<xs:enumeration value="R23"/>
+				<xs:enumeration value="R24"/>
+				<xs:enumeration value="R25"/>
+				<xs:enumeration value="R26"/>
+				<xs:enumeration value="UNM"/>
+				<xs:enumeration value="UNR"/>
+				<xs:enumeration value="W01"/>
+				<xs:enumeration value="W02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="TimeslotCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="10"/>
+				<xs:enumeration value="00D"/>
+				<xs:enumeration value="00N"/>
+				<xs:enumeration value="0NR"/>
+				<xs:enumeration value="0PK"/>
+				<xs:enumeration value="24H"/>
+				<xs:enumeration value="24M"/>
+				<xs:enumeration value="D01"/>
+				<xs:enumeration value="D02"/>
+				<xs:enumeration value="ENI"/>
+				<xs:enumeration value="FR1"/>
+				<xs:enumeration value="FR2"/>
+				<xs:enumeration value="FR3"/>
+				<xs:enumeration value="FR4"/>
+				<xs:enumeration value="HT1"/>
+				<xs:enumeration value="HT2"/>
+				<xs:enumeration value="HT3"/>
+				<xs:enumeration value="INT"/>
+				<xs:enumeration value="KP5"/>
+				<xs:enumeration value="KP6"/>
+				<xs:enumeration value="KP7"/>
+				<xs:enumeration value="KP8"/>
+				<xs:enumeration value="N01"/>
+				<xs:enumeration value="N02"/>
+				<xs:enumeration value="N03"/>
+				<xs:enumeration value="N04"/>
+				<xs:enumeration value="R21"/>
+				<xs:enumeration value="R22"/>
+				<xs:enumeration value="R23"/>
+				<xs:enumeration value="R24"/>
+				<xs:enumeration value="R25"/>
+				<xs:enumeration value="R26"/>
+				<xs:enumeration value="UNR"/>
+				<xs:enumeration value="W01"/>
+				<xs:enumeration value="W02"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="Title">
+		<xs:simpleType>
+			<xs:restriction base="MarketFreeText_Type">
+				<xs:maxLength value="4"/>
+				<xs:enumeration value="Mr"/>
+				<xs:enumeration value="Ms"/>
+				<xs:enumeration value="Miss"/>
+				<xs:enumeration value="Mrs"/>
+				<xs:enumeration value="Dr"/>
+				<xs:enumeration value="Prof"/>
+				<xs:enumeration value="Sr"/>
+				<xs:enumeration value="Fr"/>
+				<xs:enumeration value="Br"/>
+				<xs:enumeration value="Rev"/>
+				<xs:enumeration value="Lady"/>
+				<xs:enumeration value="Lord"/>
+				<xs:enumeration value="Cllr"/>
+				<xs:enumeration value="Msgr"/>
+				<xs:enumeration value="Sir"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="TokenMeterDetails">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="30"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="TotalUsageFactor">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="31"/>
+				<xs:fractionDigits value="14"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="TradingAs" type="NameType"/>
+	<xs:attribute name="TransactionReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="REG"/>
+				<xs:enumeration value="NGP"/>
+				<xs:enumeration value="NSP"/>
+				<xs:enumeration value="COG"/>
+				<xs:enumeration value="COI"/>
+				<xs:enumeration value="COS"/>
+				<xs:enumeration value="REP"/>
+				<xs:enumeration value="SCH"/>
+				<xs:enumeration value="FIN"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:simpleType name="TransactionReference_Type">
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="35"/>
+			<xs:pattern value="[A-Za-z0-9 ,.;:/\[+\-_=\]]{1,}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="TransformerLossFactor">
+		<xs:simpleType>
+			<xs:restriction base="xs:decimal">
+				<xs:totalDigits value="6"/>
+				<xs:fractionDigits value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="UnitNo">
+		<xs:simpleType>
+			<xs:restriction base="NameType">
+				<xs:maxLength value="10"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="UnmeteredTypeCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="8"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="UOM_Code">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:maxLength value="3"/>
+				<xs:enumeration value="K3"/>
+				<xs:enumeration value="KVA"/>
+				<xs:enumeration value="KVR"/>
+				<xs:enumeration value="KWH"/>
+				<xs:enumeration value="KWT"/>
+				<xs:enumeration value="MWH"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:complexType name="UsageFactorsActual_Type">
+		<xs:attribute ref="TimeslotCode" use="required"/>
+		<xs:attribute ref="EffectiveFromDate" use="required"/>
+		<xs:attribute ref="ActualUsageFactor" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="UsageFactorsEstimated_Type">
+		<xs:attribute ref="TimeslotCode" use="required"/>
+		<xs:attribute ref="EffectiveFromDate" use="required"/>
+		<xs:attribute ref="ActualUsageFactor" use="optional"/>
+		<xs:attribute ref="EstimatedUsageFactor" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="UsageFactorsEstimatedCOS_Type">
+		<xs:attribute ref="TimeslotCode" use="required"/>
+		<xs:attribute ref="EffectiveFromDate" use="required"/>
+		<xs:attribute ref="EstimatedUsageFactor" use="optional"/>
+	</xs:complexType>
+	<xs:attribute name="VCAttributeDeleted" type="Flag_Type"/>
+	<xs:simpleType name="VersionNumber_Type">
+		<xs:restriction base="xs:string">
+			<xs:length value="8"/>
+			<xs:pattern value="([0-9]{2}\.[0-9]{2}\.[0-9]{2})"/>
+			<xs:enumeration value="12.00.00"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:attribute name="WithdrawalReasonCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="2"/>
+				<xs:enumeration value="A1"/>
+				<xs:enumeration value="A2"/>
+				<xs:enumeration value="A3"/>
+				<xs:enumeration value="A4"/>
+				<xs:enumeration value="A5"/>
+				<xs:enumeration value="B1"/>
+				<xs:enumeration value="C1"/>
+				<xs:enumeration value="C2"/>
+				<xs:enumeration value="D1"/>
+				<xs:enumeration value="D2"/>
+				<xs:enumeration value="D3"/>
+				<xs:enumeration value="E1"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+	<xs:attribute name="WorkTypeCode">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:length value="4"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
+</xs:schema>
