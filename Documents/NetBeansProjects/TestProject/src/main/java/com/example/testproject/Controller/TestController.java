@@ -5,10 +5,8 @@
  */
 package com.example.testproject.Controller;
 
-import com.example.testproject.mybatismapper.Transaction;
-import com.example.testproject.mybatismapper.Transaction_I;
 
-import com.utilibill.market.type.CATSChangeReasonCode;
+
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -36,28 +34,6 @@ public class TestController {
 
 //    @Value("${mymessage}")
     private String message = "messagePlaceHolder";
-
-    @Autowired
-    private Transaction_I transaction_I;
-
-    @GetMapping("/transfers")
-    public List<Transaction> getMessage(Model model) {
-
-        model.addAttribute("message", message);
-
-        List<Transaction> transactions = transaction_I.findByServiceIdAndTransGroup("QFFF0000LV", "CATS");
-
-        ArrayList<CATSChangeReasonCode> crCodesList = new ArrayList<>();
-        crCodesList.add(CATSChangeReasonCode.CR1000);
-        List<Transaction> transactionsOfSameServiceId = new ArrayList<>();
-
-        transactions.addAll(transactionsOfSameServiceId.stream()
-                .filter(s -> crCodesList.toString().indexOf(s.getTranCode()) > 0)
-                .filter(y -> y.getDateAdded().before(new Timestamp(System.currentTimeMillis())))
-                .collect(Collectors.toList()));
-
-        return transactions;
-    }
 
     @GetMapping("/add")
     public String getMessage() {
