@@ -29,10 +29,35 @@ public class LongestPalindrome {
         }
         return s;
     }
-    
+    public String longestPalindrome2(String s) {
+        
+        int length = s.length();
+        if (length==1) return s;
+        for (int i=length; i>=1; i--){
+            String result = "";
+            for (int k=0;k<=length-i;k++){
+                String subString = s.substring(k, k+i);
+                boolean isPalindrome = true;
+                for (int j=0;j<i/2;j++){
+                    if (!subString.substring(j,j+1).equals(subString.substring(i-j-1, i-j))){
+                        isPalindrome = false;
+                        break;
+                    }
+                }
+                if (isPalindrome) {
+                    result = subString;
+                    break;
+                }
+            }            
+            
+            if (!result.equals("")) return result;
+        }
+        
+        return null;
+    }    
     public static void main(String[] args){
         LongestPalindrome test = new LongestPalindrome();
-        String s = test.longestPalindrome("babaddtattarrattatd");
+        String s = test.longestPalindrome2("mmmmbabaddtattarrattatdnnnnnnnnnnnnyyyyyyyyyyyyyyyyyyyrrrrswcghghhhh  g");
         System.out.println(s);
     }
 }
