@@ -38,7 +38,9 @@ public class ZigZagConversion {
         
         for (int j = 0; j < s.length(); j++) {
             charAtPos = s.substring(j,j+1);
-            int rowNum = j % (numRows+numRows-2) < numRows? j % (numRows+numRows-2) : 2 * (numRows - 1) - j % (numRows+numRows-2)   ;
+            int loopNum = 2 * numRows - 2;
+            int orderInLoop = j % loopNum;
+            int rowNum = orderInLoop < numRows? orderInLoop : 2 * (numRows - 1) - orderInLoop   ;
             strs.get(rowNum).append(charAtPos);
         }
         String result = "";
