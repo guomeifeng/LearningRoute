@@ -15,7 +15,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
  * @author kelly
  */
 @SpringBootApplication
-@EnableJpaRepositories("Test2.DAO")
+@EnableJpaRepositories
 @EnableAutoConfiguration
 public class Test2Application {
     public static void main(String[] args){

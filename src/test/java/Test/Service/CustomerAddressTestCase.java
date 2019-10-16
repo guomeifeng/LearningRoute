@@ -73,7 +73,6 @@ public class CustomerAddressTestCase {
     public void findAll11(){
         log.info("start");
         String postCode = "3104";
-        List<Address> addresses = addressRepository.findByPostCode(postCode);
         List<Object[]> customers = customerAddressRepository.findCustomersByAddress_PostCode(postCode);
         log.info("end");
         

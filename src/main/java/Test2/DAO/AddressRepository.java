@@ -17,9 +17,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AddressRepository extends JpaRepository<Address, Integer>{
 
-    public List<Address> findByPostCode(String postCode);
-
-
-
-    
 }
