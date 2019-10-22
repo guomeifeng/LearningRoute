@@ -11,7 +11,7 @@ package Test2.controller;
  */
 public class RestURIConstants {
 
-    public static final String GET_CUSTOMERS = "/rest/customer/{postcode}";
-    public static final String CREATE_CUSTOMER = "/rest/customer/create";
+    public static final String GET_CUSTOMERS = "/get/{postCode}";
+    public static final String CREATE_CUSTOMER = "/create";
 
 }

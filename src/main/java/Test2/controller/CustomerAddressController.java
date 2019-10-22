@@ -15,8 +15,14 @@ import Test2.service.CustomerService;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.websocket.server.PathParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,24 +36,40 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/customer")
 @Slf4j
-public class CustomerController {
+
+public class CustomerAddressController {
 
     @Autowired
     private CustomerService customerService;
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public @ResponseBody  String sayHello() {
 
-    @RequestMapping(value = RestURIConstants.GET_CUSTOMERS, method = RequestMethod.GET)
-    public @ResponseBody
-    List<Customer> getCustomersByPostCode(@RequestBody String postCode) {
-
-        return customerService.getCustomersByPostCode(postCode);
+        return "Hello World";
+       
+    }
+    
+    
+    @GetMapping(value = RestURIConstants.GET_CUSTOMERS)
+    
+    public @ResponseBody 
+    List<Customer> getCustomersByPostCode(@PathVariable String postCode) {
+        List<Customer> cus = new ArrayList<>();
+        Customer c = new Customer();
+        c.setGivenName("1");
+        c.setSurName("2");
+        c.setId(0);
+        cus.add(c);
+        return cus;
        
     }
 
-    @RequestMapping(value = RestURIConstants.CREATE_CUSTOMER, method = RequestMethod.POST)
+    @PostMapping(value = RestURIConstants.CREATE_CUSTOMER)
     public @ResponseBody
-    Integer createCustomer(@RequestBody Customer customer, @RequestBody List<Address> addressList) {
-        return customerService.createCustomer(customer,addressList);
+    Customer createCustomer(@RequestBody Customer customer) {
+        customer.setId(100);
+        return customer;
+//        return customerService.createCustomer(customer,addressList);
             
                 
     }
