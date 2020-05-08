@@ -41,7 +41,7 @@ public class ConfigController {
 		ConfigDTO config1 = new ConfigDTO();
 		config1.setEnvironment("GlowPowerUAT");
 		config1.setItemkey("GC_ACCESS_KEY");
-		config1.setItemvalue("sandbox__NNbWfsP9FKXWMxB3kAGUK9fr7e72VKfINMHWsw_");
+		config1.setItemvalue("......");
 		configs.add(config1);
 		return configs;
 	}
