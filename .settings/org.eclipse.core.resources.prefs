@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+encoding//src/com/kgstore/payment/webservice/WsToken.java=UTF-8
+encoding//src/com/kgstore/payment/webservice/WsTokenService.java=UTF-8
+encoding//src/com/kgstore/payment/webservice/WsTokenServiceLocator.java=UTF-8
+encoding//src/com/kgstore/payment/webservice/WsTokenSoapBindingStub.java=UTF-8
