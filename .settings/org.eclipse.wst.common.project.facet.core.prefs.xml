@@ -1,0 +1,21 @@
+<root>
+  <facet id="jpt.jaxb">
+    <node name="classgen">
+      <attribute name="package" value="com.example.aemo"/>
+    </node>
+    <node name="libprov">
+      <attribute name="provider-id" value="jaxb-no-op-library-provider"/>
+    </node>
+    <node name="platform">
+      <attribute name="platform-id" value="generic_2_2"/>
+    </node>
+    <node name="schemas">
+      <node name="schema-1">
+        <attribute name="location" value="platform:/resource/aseXML/src/com/example/aemo/aseXML/aseXML_r38.xsd"/>
+      </node>
+      <node name="schema-2">
+        <attribute name="location" value="platform:/resource/aseXML/aseXML_r38/aseXML_r38.xsd"/>
+      </node>
+    </node>
+  </facet>
+</root>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<ase:aseXML xmlns:ase="urn:aseXML:r38" 
+            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xsi:schemaLocation="urn:aseXML:r38 http://www.nemmco.com.au/aseXML/schemas/r38/aseXML_r38.xsd
+">
+	<Header>
+		<From description="National Electricity Market Management Company">NEMMCO</From>
+		<To description="National Electricity Market Management Company">NEMMCO</To>
+		<MessageID>ENERGEX-MSG-11234569</MessageID>
+		<MessageDate>2001-10-31T13:20:10.000+10:00</MessageDate>
+		<TransactionGroup>CATS</TransactionGroup>
+		<Priority>Medium</Priority>
+		<SecurityContext>NEMMCOBATCH</SecurityContext>
+		<Market>NEM</Market>
+	</Header>
+	<Transactions>
+		<Transaction transactionID="ENERGEX-TNS-12348990" transactionDate="2001-10-31T13:20:09.900+10:00">
+			<CATSChangeRequest version="r29">
+				<ChangeReasonCode>5050</ChangeReasonCode>
+				<ProposedDate>2006-04-16</ProposedDate>
+				<NMIStandingData xsi:type="ase:ElectricityStandingData">
+					<NMI checksum="2">1122334455</NMI>
+					<MasterData>
+						<DistributionLossFactorCode>WE33</DistributionLossFactorCode>
+					</MasterData>
+				</NMIStandingData>
+			</CATSChangeRequest>
+		</Transaction>
+	</Transactions>
+</ase:aseXML>
