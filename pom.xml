@@ -1,0 +1,21 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.kgstore</groupId>
+  <artifactId>CyberSourceWs</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <dependencies>
+  <!-- https://mvnrepository.com/artifact/com.cybersource/AuthenticationSdk -->
+<dependency>
+    <groupId>com.cybersource</groupId>
+    <artifactId>AuthenticationSdk</artifactId>
+    <version>0.0.11</version>
+</dependency>
+  <!-- https://mvnrepository.com/artifact/com.cybersource/cybersource-rest-client-java -->
+<dependency>
+    <groupId>com.cybersource</groupId>
+    <artifactId>cybersource-rest-client-java</artifactId>
+    <version>0.0.22</version>
+</dependency>
+  
+  </dependencies>
+</project>
